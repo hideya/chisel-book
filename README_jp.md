@@ -5,6 +5,7 @@
     - 校正初回 作業（実質の翻訳作業）
         - 2021-02-01 RC 0.3
         - 2021-02-25 RC 0.4
+        - 2021-08-07 RC 0.5
 - 日本語版の変更点
     - 原文、機械翻訳、校正を同時に管理できるように変数追加
         - 原文: fshoworiginal
@@ -94,7 +95,7 @@ Install SBT
 
 Install Latex
 
-    brew cask install basictex
+    brew install basictex --cask
     brew install ghostscript
 
 tlmgr で必要なコンポーネントを追加
