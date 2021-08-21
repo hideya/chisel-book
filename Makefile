@@ -5,7 +5,7 @@ all: gencode fig book
 
 gencode:
 	-mkdir code
-	sbt test
+	#sbt test
 	scala scripts/gencode.scala
 
 fig:

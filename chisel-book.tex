@@ -6,7 +6,8 @@
 % 2021-02-01 RC 0.3
 % 2021-02-25 RC 0.4
 %   Adobe DocumentCloud => https://documentcloud.adobe.com/link/review?uri=urn:aaid:scds:US:18b0b3f9-6495-42c1-952b-3fac098891f9 
-% 2021-XX-XX RC 0.5 WIP
+% 2021-08-07 RC 0.5 remove line number, modify list environment
+% 2021-08-22 RC 0.6 fix bookmark encoding
 
 \documentclass[%draft,
     10pt,
@@ -43,14 +44,19 @@
 % LeeSeshia is 15,73 ? 20,96 cm, ratio 1.332
 %%\setlength{\paperwidth}{15.73cm} \setlength{\paperheight}{20.96cm}
 %\setlength{\paperwidth}{15.72cm} \setlength{\paperheight}{20.95cm}
+
+% A4 for Japanese version （しばらくは、A4で印刷して校正用する体裁にしたいと思います）
+%\setlength{\paperwidth}{21.0cm} \setlength{\paperheight}{29.7cm}
+% B5 for Japanese version
+\setlength{\paperwidth}{18.2cm} \setlength{\paperheight}{25.7cm}
+% PC size for Japanese Book
+%\setlength{\paperwidth}{18.2cm} \setlength{\paperheight}{23.3cm}
+
 %\typearea{calc} % without BCOR results to a DIV of 8 for 11pt
 \typearea[1cm]{18} % TODO: check if 1 cm is the correct number
 
 
-% A4 for Japanese version （しばらくは、A4で印刷して校正用する体裁にしたいと思います）
-\setlength{\paperwidth}{21.0cm} \setlength{\paperheight}{29.7cm}
-% B5 for Japanese version
-%\setlength{\paperwidth}{18.2cm} \setlength{\paperheight}{25.7cm}
+
 
 \usepackage{scrlayer-scrpage}
 \setkomafont{pagehead}{\scshape\small}
@@ -74,7 +80,17 @@
 \fi
 
 \usepackage{pslatex} % -- times instead of computer modern, especially for the plain article class
-\usepackage[colorlinks=true,bookmarks=false]{hyperref}
+
+%\usepackage[colorlinks=true,bookmarks=false]{hyperref}
+% for Japanese bookmark
+\usepackage[unicode]{hyperref}
+\usepackage{pxjahyper}
+\hypersetup{
+  colorlinks=true,
+  bookmarks=false,
+  bookmarksnumbered
+} % ignore the hyperref warning
+
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -538,8 +554,9 @@ Chiselに興味ある方は、勉強会に自由に参加できます。新型�
 \begin{description}
 \item[2020-10-10] 一時公開版
 \item[2021-02-01] RC 0.3 初回校正版、(目次にLatexソースの行番号追記）
-\item[2021-02-25] RC 0.4
-\item[2021-08-07] RC 0.5
+\item[2021-02-25] RC 0.4 RISCV勉強会校正版
+\item[2021-08-07] RC 0.5 行番号削除、リスト環境を変更
+\item[2021-08-22] RC 0.6 しおりの文字化け修正, A4からB5版に変更
 \end{description}
 
 \fi %(日本語版追記)
