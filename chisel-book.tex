@@ -36,8 +36,17 @@
 
 % 2020-10-07 added for Overleaf
 %\usepackage[utf8]{inputenc}
+% 2021-08-20 suppress warnings => NG
+%\usepackage{silence}
+%\WarningFilter{inputenc}{Unicode character}
+
+% 2021-08-30 mune10, this suppress an inputenc warnings. (99+ => 87), but ToC is getting broken.
+%\usepackage[postscript]{ucs}
+%\usepackage[utf8x]{inputenc}
+
 % 2020-10-10 igonore inoutenc errors
 \nonstopmode
+
 
 % iPad Air 2 resolution: 1536 x 2048
 % 1.3333 ratio (4:3)
@@ -75,6 +84,7 @@
 \ifshowtrans
 \ifbook
 \else
+% 2021-08-20 remove ToC link at the bottom
 \cfoot{\hyperlink{contents}{{\textnormal{目次}}}}
 \fi
 \fi
@@ -90,6 +100,8 @@
   bookmarks=false,
   bookmarksnumbered
 } % ignore the hyperref warning
+
+
 
 \usepackage{booktabs}
 \usepackage{graphicx}
@@ -172,6 +184,8 @@
 \renewcommand{\tablename}{表}
 \renewcommand{\lstlistingname}{コード}
 \fi
+
+
 
 \makeindex
 
@@ -398,7 +412,7 @@ In \emph{Digital Design with Chisel}, Martin has laid a strong foundation for pr
 \fi
 
 \ifshowtrans %(校正 3/5 mune10)
-マーティンは\emph{Chiselで始めるデジタル回路設計}で生産的なデジタル設計のための強力なベースを築きました。次に何を作るかはあなた次第です。
+マーティンは\emph{Chiselで始めるデジタル回路設計}で生産的なデジタル回路設計のための強力なベースを築きました。次に何を作るかはあなた次第です。
 \fi
 
 \medskip
@@ -540,13 +554,14 @@ Many of your questions have helped to shape this book.
 日本語版のソースコードはこちら\url{https://github.com/chisel-jp/chisel-book} で公開しています。
 誤訳や表現の誤りの訂正など、小さな修正も歓迎します。
 
-Chiselに興味ある方は、勉強会に自由に参加できます。新型コロナの影響でF2Fの勉強会の開催はできておりませんが、Chisel勉強会のSlackへ登録(URL \url{https://chisel-jp-slackin.herokuapp.com/})していただければ情報交換できると思います。
+Chiselに興味ある方は、勉強会に自由に参加できます。新型コロナの影響でF2Fの勉強会の開催はできておりませんが、Chisel勉強会のSlackへ登録(URL \url{https://chisel-jp-slackin.herokuapp.com/})いただければ情報交換できると思います。
 
 \subsection*{日本語版での変更点}
 
 \begin{itemize}
     \item Wikipediaへのリンクは(英語)(日本語)の併記としました。これは日本語版Wikipediaの記述が不十分な用語があるためです。
     \item 原書の「デジタルデザイン」は、日本語版ではより具体的に「デジタル回路設計」としました。
+    \item ソースコードのリストに薄いグレーの背景色を設定しました。また、コード目次に列挙されるソースコードにつきましては、挿入される位置が本文とはずれるため、枠と行番号を追加することで本文中のソースコードと区別しやすいように変更しました。
 \end{itemize}
 
 \subsection*{日本語版の履歴}
@@ -556,7 +571,8 @@ Chiselに興味ある方は、勉強会に自由に参加できます。新型�
 \item[2021-02-01] RC 0.3 初回校正版、(目次にLatexソースの行番号追記）
 \item[2021-02-25] RC 0.4 RISCV勉強会校正版
 \item[2021-08-07] RC 0.5 行番号削除、リスト環境を変更
-\item[2021-08-22] RC 0.6 しおりの文字化け修正, A4からB5版に変更
+\item[2021-08-22] RC 0.6 しおりの文字化け修正, A4、B5、PC版に対応
+\item[2021-08-XX] RC 0.7 校正
 \end{description}
 
 \fi %(日本語版追記)
@@ -580,7 +596,7 @@ to enable you to build more complex, interacting digital systems in a shorter ti
 \fi
 
 \ifshowtrans %(校正 3/6 mune10)
-本書は、近代的なハードウェア構成言語である \myref{https://www.chisel-lang.org/}{Chisel}~\cite{chisel:dac2012} を使ったデジタルシステム設計について解説します。
+本書は、近代的なハードウェア構築言語である \myref{https://www.chisel-lang.org/}{Chisel}~\cite{chisel:dac2012} を使ったデジタルシステム設計について解説します。
 本書では、一般的なデジタル回路設計の書籍に比べ、より高い抽象レベルでの設計に注目し、より複雑で、相互作用のあるデジタルシステムを短期間で開発できるようになることを目指します。
 \fi
 
@@ -610,7 +626,7 @@ but allows you to write hardware generators.
 \fi
 
 \ifshowtrans %(校正 3/9 mune10)
-Chiselは、オブジェクト指向や関数型言語といったソフトウェア工学の進歩をデジタル設計の世界にもちこみます。
+Chiselは、オブジェクト指向や関数型言語といったソフトウェア工学の進歩をデジタル回路設計の世界にもちこみます。
 Chiselは、レジスタ転送レベル（RTL）でのハードウェア記述をサポートするだけではなく、ハードウェアジェネレータ(生成器)を記述できます。
 \fi
 
@@ -669,7 +685,7 @@ CMOSトランジスタを使ったゲートの生成といったようなデジ�
 なお、この本ではASICや
 \myref{https://en.wikipedia.org/wiki/Field-programmable_gate_array}{FPGA(英語)}/
 \myref{https://ja.wikipedia.org/wiki/FPGA}{(日本語)}
-向けのデザインに現在用いられている抽象レベルでのデジタル設計を説明しています。
+向けのデザインに現在用いられている抽象レベルでのデジタル回路設計を説明しています。
 \footnote{著者はターゲットとする技術面ではASICよりもFPGAに詳しいため、この本で紹介されるデザインの最適化はFPGAをターゲットにしている場合があります。}
 この本のための予備知識として、
 \myref{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra(英語)}/
@@ -1155,7 +1171,7 @@ Chiselの公式ドキュメントやその他の関連ドキュメントはオ�
 
 \item The \myref{https://github.com/ucb-bar/chisel-tutorial}{Chisel Tutorial}
 % provides a ready setup project containing small exercises with testers and solutions.
-はテストとソリューションを含む小さな演習問題を含む準備されたプロジェクトを提供します。
+はテストとソリューションおよび、小さな演習問題を含む準備されたプロジェクトを提供します。
 
 \item The \myref{https://github.com/freechipsproject/chisel3/wiki}{Chisel Wiki}
 %contains　a short users guide to Chisel and links to further information.
@@ -1181,9 +1197,23 @@ Chiselの公式ドキュメントやその他の関連ドキュメントはオ�
 日本語の情報についてもリストします（日本語版追記）
 
 \begin{itemize}
-\item \myref{https://diningyo.booth.pm/items/1718207}{Chiselを始めたい人に読んでほしい本} (だいにんぎょー著) は、ChiselとそのもととなるScalaの日本語で最初の解説書です。 \myref{https://www.amazon.co.jp/dp/4844378694/ref=cm_sw_em_r_mt_dp_.tvGFb8W1QH5Y}{Amazon}でも買えます。
-\item \myref{https://diningyo.booth.pm/items/1888995}{Chiselクイックリファレンス} だいにんぎょー はchisel3.utilパッケージのリファレンス集です。
-\item \myref{https://www.amazon.co.jp/dp/4802098057/ref=cm_sw_em_r_mt_dp_5AvGFb1ZHVJTP}{プログラマのためのFPGAによるRISC-Vマイコンの作り方} 堀江 徹也 (著) はChiselの紹介から始まり、SiFive社のフリーのRISC-V SoC実装である Freedomを例にFPGAの開発までカバーします。
+\item \myref{https://diningyo.booth.pm/items/1718207}
+{Chiselを始めたい人に読んでほしい本} 
+(だいにんぎょー 著) 
+は、ChiselとそのもととなるScalaの日本語で最初の解説書です。 \myref{https://www.amazon.co.jp/dp/4844378694/ref=cm_sw_em_r_mt_dp_.tvGFb8W1QH5Y}
+{Amazon}でも買えます。
+\item \myref{https://diningyo.booth.pm/items/1888995}
+{Chiselクイックリファレンス}
+(だいにんぎょー 著)
+はchisel3.utilパッケージのリファレンス集です。
+\item \myref{https://www.amazon.co.jp/dp/4802098057/ref=cm_sw_em_r_mt_dp_5AvGFb1ZHVJTP}
+{プログラマのためのFPGAによるRISC-Vマイコンの作り方} 
+(堀江徹也 著) 
+はChiselの紹介から始まり、SiFive社のフリーのRISC-V SoC実装である Freedomを例にFPGAの開発までカバーします。
+\item \myref{https://www.amazon.co.jp/dp/4297123053/ref=cm_sw_em_r_mt_dp_9X78M1AVEEB4X9F0B2QF}
+{RISC-VとChiselで学ぶ はじめてのCPU自作 ――オープンソース命令セットによるカスタムCPU実装への第一歩}
+(⻄⼭ 悠太朗、井⽥健太 著)
+はChiselを利用したCPUの作り方を解説しています。
 \end{itemize}
 \fi %(日本語版追記)
 
@@ -1251,7 +1281,7 @@ with the \emph{Programmer} button and one of the LEDs should blink.
 \fi
 
 \ifshowtrans %(校正 4/13 diningyo)
-次の手順として論理合成ツールのFPGAプロジェクトファイルを設定し、ピンをアサインし、Verilogコードをコンパイルし、得られたビットファイルでFPGAを設定します。\footnote{実際のプロセスは、論理合成、配置配線、タイミング解析の実行、およびビットファイルの生成と、各ステップでさらに細かくなります。ただし、この導入例では、単にコードを 「コンパイル」 します。}
+次の手順として論理合成ツールのFPGAプロジェクトファイルを設定し、ピンをアサインし、Verilogコードをコンパイルし、得られたビットファイルでFPGAをコンフィグします（ビットファイルをFPGAやボード上のFlashROMに書き込む)。\footnote{実際のプロセスは、論理合成、配置配線、タイミング解析の実行、およびビットファイルの生成と、各ステップでさらに細かくなります。ただし、この導入例では、単にコードを 「コンパイル」 します。}
 これらの手順の詳細についてはここでは述べませんので、IntelのQuartusやXilinxのVivadoのマニュアルを参照してください。
 しかしながらexamplesリポジトリには、いくつかのポピュラーなIntelのFPGAボード（例:DE 2-115）ですぐに使えるQuartusプロジェクトが\code{quartus}というフォルダに含まれています。リポジトリに含まれているボードを持っている場合は、Quartusを立ち上げてプロジェクトを開き、\emph{Play}ボタンを押してコンパイルを行い、\emph{Programmer}ボタンを押してFPGAボードの設定を行えば、LEDが点滅します。
 \fi
@@ -1352,7 +1382,7 @@ These essential elements can be combined to build larger, more interesting circu
 \fi
 
 \ifshowtrans %(校正 4/14 mune10)
-ここでは、デジタル設計のための基本的なコンポーネントを紹介します。
+ここでは、デジタル回路設計のための基本的なコンポーネントを紹介します。
 組み合わせ回路とフリップフロップです。
 これらの基本的な要素を組み合わせることで、より大きくて面白い回路を作ることができます。
 \fi
@@ -2057,7 +2087,7 @@ till 9 and wraps around to 0 when reaching 9.
 
 \ifshowtrans %(校正 7/5 diningyo)
 シンプルなアプローチでは、ある値までカウントアップしていきます。
-しかし、コンピュータサイエンスとデジタル設計では、カウントは0からスタートします。
+しかし、コンピュータサイエンスとデジタル回路設計では、カウントは0からスタートします。
 そのため、10をカウントする場合は、0から9までのカウントを行います。
 これを行ったのが次に示すコードで、9までカウントした後は0に戻ります。
 \fi
@@ -2157,7 +2187,7 @@ needs to be wrapped into a \code{Wire}
 
 \ifshowtrans %(校正 7/6 diningyo)
 Chiselの\code{Vec}は同じ型（ベクトル）の信号のコレクションを表現するものです。
-各要素へはインデックスを用いて、アクセスできます。Chiselの\code{Vec}は他のプログラミング言語においての、配列のようなデータ構造と似ているものです。
+各要素へはインデックスを用いて、アクセスできます。Chiselの\code{Vec}は他のプログラミング言語においての、配列(Array)のようなデータ構造と似ているものです。
 \footnote{\codefoot{Array}という名前は、Scalaによってすでに使用されています。}
 \code{Vec}は2つのパラメータを持ったコンストラクタを呼び出すことで、生成できます。
 2つのパラメータとは、要素数と要素の型です。
@@ -2362,7 +2392,7 @@ The pin assignment can also be done with the GUI version of the tool.
 これらの入力とピンアサインを定義すれば、簡単なテストを始められます。
 そのテストとは、デザインから点滅する論理を削除し、1つのスイッチをLEDの出力に接続し、コンパイルとFPGAへの設定を行うことです。
 スイッチのON/OFFによってLEDを切り替えられましたか？答えが”はい”であれば、その入力は有効です。
-もし”いいえ”なら、FPGAの設定をデバッグする必要があります。ピンの割り振りはツールのGUI画面で行うことが可能です。
+もし”いいえ”なら、FPGAの設定(コンフィギュレーション)をデバッグする必要があります。ピンの割り振りはツールのGUI画面で行うことが可能です。
 \fi
 
 \ifshoworiginal
@@ -2387,7 +2417,7 @@ without configuring an FPGA and toggle switches.
 \fi
 
 \ifshowtrans %(校正 9/3 diningyo)
-ここまでは、シンプルな組み合わせ論理を実装して、その機能をFPGA上の本物のハードウェアでテストしました。次のステップでは、FPGAのコンフィグレーションを生成するためのビルドプロセスが、どのようにして動作するのかを、少し見てみましょう。さらに、FPGAをコンフィグレーションしたり、スイッチを切り替えることなく回路をテストできる、Chiselのシンプルなテストフレームワークを学びます。
+ここまでは、シンプルな組み合わせ論理を実装して、その機能をFPGA上の本物のハードウェアでテストしました。次のステップでは、FPGAの設定(コンフィギュレーション)を生成するためのビルドプロセスが、どのようにして動作するのかを、少し見てみましょう。さらに、FPGAをコンフィグしたり、スイッチを切り替えることなく回路をテストできる、Chiselのシンプルなテストフレームワークを学びます。
 \fi
 
 \ifshoworiginal
@@ -2448,7 +2478,7 @@ For example, it is cool to do hardware design on a plane.
 \ifshowtrans %(校正 5/4 mune10)
 Chiselを表すScalaライブラリとChiselのテスタは、ビルド処理中にMavenリポジトリから自動的にダウンロードされます。
 各種ライブラリは \code{build.sbt} で指定します。
-\code{build.sbt} で \code{latest.release} で設定することで、常に最新バージョンの Chisel を使用するようにすることができます。
+\code{build.sbt} に \code{latest.release} を設定することで、常に最新バージョンの Chisel を使用するようにすることができます。
 しかし、これは各ビルドで必要なバージョンがMavenリポジトリから検索されることを意味します。
 ビルドを成功させるためには、この検索のためのインターネット接続が必要になります。
 Chiselやその他のScalaライブラリは、特定のバージョンを \code{build.sbt} で指定した方が良いでしょう。
@@ -3037,7 +3067,12 @@ software development. A collection of unit tests can also serve for
 \fi
 
 \ifshowtrans %(校正 8/10 mune10)
-以上で紹介したテスタは、ソフトウェアの開発と同様に、小さなデザインや、\myref{https://en.wikipedia.org/wiki/Unit_testing}{unit testing、ユニットテスト}に対してうまく働きます。
+以上で紹介したテスタは、ソフトウェアの開発と同様に、小さなデザインや、
+\myref{https://en.wikipedia.org/wiki/Unit_testing}{unit testing(英語)}/
+%%begin novalidate
+\href{https://ja.wikipedia.org/wiki/%E5%8D%98%E4%BD%93%E3%83%86%E3%82%B9%E3%83%88}{単体テスト(日本語)}
+%%end novalidate
+に対してうまく働きます。
 一連のユニットテストは
 \myref{https://en.wikipedia.org/wiki/Regression_testing}{regression testing(英語)}/
 %%begin novalidate
@@ -3257,7 +3292,7 @@ and an \code{App} that generates the Verilog code.
 \ifshowtrans %(校正 8/10 mune10)
 まず、最小限のChiselプロジェクトについて見てみます。
 \myref{https://github.com/schoeberl/chisel-examples/tree/master/hello-world}{Hello World}のファイルを見てみましょう。
-\code{Hello.scala}は、単一ののハードウェアのソースファイルです。
+\code{Hello.scala}は、単一のハードウェアのソースファイルです。
 これにはLED点滅のハードウェア記述(\code{class Hello})と、Verilogコードを生成する\code{App}が含まれます。
 \fi
 
@@ -3381,7 +3416,7 @@ available and will it be automatically downloaded?
 
 \ifshowtrans %(校正 8/10 mune10)
 \noindent  その後、\code{sbt}でビルドを再実行してください。
-もし新しいバージョンのChiselがあって、自動的にダウンロードされていますか？
+もし新しいバージョンのChiselがあれば、自動的にダウンロードされていますか？
 \fi
 
 \ifshoworiginal
@@ -3423,7 +3458,7 @@ DE2-115ボード用のQuartusプロジェクトファイルが2つ含まれて�
 メインの設定（ソースファイル、デバイス、ピンアサイン）は、テキストファイルである \myref{https://github.com/schoeberl/chisel-examples/blob/master/hello-world/quartus/altde2-115/hello.qsf}{hello.qsf}で定義されています。
 ファイルを見ると、どの信号がどのピンに割り当てられているかが分かります。
 もし、別のボードにプロジェクトを変更させる必要がある場合は、その部分を修正します。
-すでにQuartusがインストールされている場合は、そのプロジェクトファイルを開き、緑色の\emph{Play}ボタンでコンパイルしたのち、FPGAをコンフィギュレーションします。
+すでにQuartusがインストールされている場合は、そのプロジェクトファイルを開き、緑色の\emph{Play}ボタンでコンパイルしたのち、FPGAをコンフィグします。
 \fi
 
 \ifshoworiginal
@@ -3525,7 +3560,7 @@ on a chip, is called the top-level component.
 \fi
 
 \ifshowtrans %(校正 5/20 mune10)
-大規模なデジタル設計では、多くの場合、複数のコンポーネントから階層的に構成されます。
+大規模なデジタル回路設計では、多くの場合、複数のコンポーネントから階層的に構成されます。
 各コンポーネントには、通常ポートと呼ばれる入力および出力ワイヤを備えたインターフェースがあります。
 これらは、集積回路 (IC) の入出力ピンに似ています。
 コンポーネントは、入力と出力を配線することで接続されます。
@@ -3634,8 +3669,7 @@ input port of B:
 \fi
 
 \ifshowtrans %(校正 10/10 mune10)
-CompCは3つの入力ポートと2つの出力ポートを持っています。
-CompAとCompBを元に構成されています。
+CompCは3つの入力ポートと2つの出力ポートを持っており、CompAとCompBから構成されています。
 ここでは、CompAとCompBがCompCのポートにどのように接続されているか、また、CompAの出力ポートとCompBの入力ポートの間の接続を示します。
 \fi
 
@@ -3648,7 +3682,7 @@ in this example \code{val compA = Module(new CompA())}.
 \fi
 
 \ifshowtrans %(校正 10/10 mune10)
-コンポーネントは、\code{new CompA()}のように\code{new}を使って生成したインスタントを\code{Module()}でラップする必要があります。
+コンポーネントは、\code{new CompA()}のように\code{new}を使って生成したインスタンスを\code{Module()}でラップする必要があります。
 そのモジュールへの参照は、ローカル変数に格納されます。この例では、\code{val compA = Module(new CompA())}です。
 \fi
 
@@ -3726,7 +3760,7 @@ way to describe them as functions that return hardware.
 \fi
 
 \ifshowtrans %(校正 5/20 mune10)
-カウンターのような小さなコンポーネントに対して、Chiselではそられをより軽量に表現する方法として、ハードウェアを返す関数を提供しています。
+カウンターのような小さなコンポーネントに対して、Chiselではそれらをより軽量に表現する方法として、ハードウェアを返す関数を提供しています。
 \fi
 
 \ifshoworiginal
@@ -3781,7 +3815,7 @@ functions such as and, or, xor. That's why it is called ALU.
 \fi
 
 \ifshowtrans %(校正 10/10 mune10)
-ALU は、図中の\code{A}と\code{B}の 2 つのデータ入力と、1 つの関数入力\code{fn}と \code{Y}の出力を持ちます。
+ALU は、図中の\code{A}と\code{B}の 2 つのデータ入力と、1 つの関数入力\code{fn}と出力の \code{Y}の持ちます。
 ALU は、\code{A}と\code{B}を演算し、結果を出力します。入力\code{fn}は、\code{A}と\code{B}の演算の種類を選択します。
 演算は通常、足し算や引き算などの演算や、and, or, xorなどの論理関数です。
 そのため ALU (算術論理演算ユニット)と呼ばれます。
@@ -6007,7 +6041,7 @@ Sketch the block diagram for the following circuits:
 \fi
 
 \ifshowtrans %(校正 6/20 mune10 校正1 12/30 aki)
-デジタル設計は、紙の上に回路としてスケッチすることが多いです。その際に、すべての詳細を示す必要はありません。
+デジタル回路設計は、紙の上に回路としてスケッチすることが多いです。その際に、すべての詳細を示す必要はありません。
 本書の図のようにブロック図を使います。
 回路を模式的に表現したものと、Chiselの記述との間を流暢に行き来できることが重要なスキルです。
 それでは、以下の回路のブロック図をスケッチしてみてください。
@@ -6521,7 +6555,7 @@ FSMs are also called synchronous sequential circuits.
 \fi
 
 \ifshowtrans %(仮訳 12/12 校正1 01/01 aki)
-ステートマシン (Finite-State Machine: FSM) は、デジタル設計の基本的な構成要素です。
+ステートマシン (Finite-State Machine: FSM) は、デジタル回路設計の基本的な構成要素です。
 FSMは、状態と状態の間の\emph{遷移}とその(ガードされた)条件を記述しています。
 FSMはリセット時に設定される、初期状態を持ちます。
 FSMは同期順序回路と呼ばれることもあります。
@@ -9595,7 +9629,7 @@ elements. For small buffers this is probably the most efficient implementation.
 \fi
 
 \ifshowtrans %(仮訳 12/24 校正1 01/03 aki)
-ソフトウェアエンジニアリングの経験がある方は、私たちが複数の小さなバッファ要素からハードウェアキューを構築し、全てを並列に実行しながら上流および下流との要素とのハンドシェイクも行っていることを不思議に思われるかもしれません。
+ソフトウェアエンジニアリングの経験がある方は、私たちが複数の小さなバッファ要素からハードウェアキューを構築し、全てを並列に実行しながら上流および下流の要素ともハンドシェイクも行っていることを不思議に思われるかもしれません。
 小さなバッファの場合は、多分これが最も効率的な実装です。
 \fi
 
@@ -9977,7 +10011,7 @@ a vector of registers (\code{Reg(Vec(4, UInt(size.W)))}).
 これらの欠点は、
 \myref{https://en.wikipedia.org/wiki/Circular_buffer}{circular buffer(英語)}/
 %%begin novalidate
-\href{https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%90%E3%83%83%E3%83%95%E3%82%A1}{{リングバッファ, 循環バッファ(日本語)}
+\href{https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%90%E3%83%83%E3%83%95%E3%82%A1}{リングバッファ, 循環バッファ(日本語)}
 %%end novalidate
 を用いたFIFO実装によって解決します。
 循環バッファは、メモリと読み書きポインタを用いて実装することができます。
@@ -10037,7 +10071,7 @@ After configuration, you should see a greeting message in the terminal.
 
 \ifshowtrans %(仮訳 12/27 校正1 01/03 aki)
 次に、合成ツールを使用してデザインを合成します。
-リポジトリには、DE2-115 FPGAボード用のQuartusプロジェクトが含まれています。Quartusで実行ボタンを押してデザインを合成し、FPGAをコンフィグレーションします。
+リポジトリには、DE2-115 FPGAボード用のQuartusプロジェクトが含まれています。Quartusで実行ボタンを押してデザインを合成し、FPGAをコンフィグします。
 コンフィギュレーション後、ターミナルにグリーティングメッセージが表示されるはずです。
 \fi
 
@@ -10892,7 +10926,7 @@ to your Chisel project.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-この本は、ハードウェア構成の言語であるChiselを用いたデジタル回路設計の入門書です。
+この本は、ハードウェア構築言語であるChiselを用いたデジタル回路設計の入門書です。
 ここまで、Chiselを使ったシンプルなものから中規模なものまでのデジタル回路設計を見てきました。
 ChiselはScalaをベースとした言語で、Scalaの強力な抽象化を継承していますが、この本は入門書として意図されているため、それぞれの例はScalaの簡単な使い方の範囲にとどまるようにしました。
 次の論理的なステップは、Scalaの基本を学び、それをあなたのChiselプロジェクトで実践してゆくことです。
@@ -11047,7 +11081,7 @@ in Lipsi assembler.
 \ifshowtrans %(校正 7/23 mune10)
 \item[\myref{https://github.com/schoeberl/lipsi}{Lipsi}]
 はシステムオンチップ でのユーティリティ機能向けの小型プロセッサです~\cite{lipsi:arcs2018} 。
-Lipsiののコードベースは非常に小さく、Chiselのプロセッサ設計の最初の出発点として利用することができます。
+Lipsiのコードベースは非常に小さく、Chiselのプロセッサ設計の最初の出発点として利用することができます。
 また、LipsiはChisel/Scalaの生産性の高さの実例でもあります。
 私が、Chiselでハードウェアを記述し、FPGA上でそれを実行し、Scalaでアセンブラを書き、ScalaでLipsiの命令セットシミュレータを書き、いくつかのテストケースを書くのに14時間ほどかかりました。
 \fi
@@ -11075,7 +11109,7 @@ DANA supports inference and learning.
 
 \ifshowtrans %(校正 7/23 mune10)
 \item[\myref{https://github.com/bu-icsg/xfiles-dana}{DANA}]
-はロケットカスタムコプロセッサインターフェース（ROCC）を使用して、RISC-Vロケットプロセッサとと統合したニューラルネットワークアクセラレータです ~\cite{RoCC:2015}。
+はロケットカスタムコプロセッサインターフェース（ROCC）を使用して、RISC-Vロケットプロセッサと統合したニューラルネットワークアクセラレータです ~\cite{RoCC:2015}。
 DANAは推論と学習をサポートしています。
 \fi
 
@@ -11281,7 +11315,7 @@ related to digital design and computer architecture.
 \ifshowtrans %(校正 3/9 mune10)
 ハードウェア設計者やコンピュータのエンジニアは略語を好みます。
 しかしながら、そうした略語になれるには時間がかかります。
-以下に、デジタル設計やコンピュータアーキテクチャで一般的に使われる略語を列挙します。
+以下に、デジタル回路設計やコンピュータアーキテクチャで一般的に使われる略語を列挙します。
 \fi
 
 \begin{description}
