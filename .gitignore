@@ -9,6 +9,7 @@
 *.lot
 *.bbl
 *.ilg
+*.out
 *.pdf
 
 code/

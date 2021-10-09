@@ -365,7 +365,7 @@ It is an exciting time to be in the world of digital design. With the end of Den
 デナードスケーリングの終わりとムーアの法則の減速で、この分野での技術革新が必要となっています。
 半導体企業は、依然として性能向上に尽力していますが、性能改善のためのコストが大幅に上昇しています。
 Chiselは、デジタル回路設計の生産性を向上させることで、このコストを削減します。
-設計の再利用による検証コストの削減や、開発初期投資（Non-Recurring Engineering、NRE） の削減により、設計者はより少ない時間でより多くの（論理）回路を開発することができます。
+設計の再利用による検証コストの削減や、開発初期投資（Non-Recurring Engineering、NRE）の削減により、設計者はより少ない時間でより多くの（論理）回路を開発することができます。
 また、学生や個人でも、イノベーションに取り組むことが簡単にできます。
 \fi
 
@@ -430,7 +430,7 @@ ChiselとFIRRTLメンテナ\\
 \fi
 
 \ifshoworiginal
-\chapter{Preface 序文}
+\chapter{Preface}
 \fi
 \ifshowtrans %(校正)
 \chapter{序文} % (校正  初回終了 ========================================================================) RC0.4校正  04/22 HHayashi
@@ -502,7 +502,7 @@ The FIFO variations also show how to use type parameters and inheritance in digi
 \ifshowtrans %(校正 3/6 mune10)
 マイナーな修正のほか、第二版での主な変更点は次の通りです。
 テストセクションが拡張されています。
-順序回路ブロック(sequential building blocks)の章では、より多くの回路例を紹介しています。
+順序回路ブロック（sequential building blocks）の章では、より多くの回路例を紹介しています。
 入力処理（input processing）に関する新しい章が設けられ、入力の同期、デバウンス回路の設計、そしてノイズが多い入力信号のフィルタリング処理について説明します。
 デザイン例の章も拡張され、異なる種類のFIFOの実装方法を説明します。
 このFIFOのバリエーションでは、型パラメータと継承をデジタル回路設計のなかでどのように扱うかを解説しています。
@@ -549,12 +549,12 @@ Many of your questions have helped to shape this book.
 \section*{日本語訳について}
 
 この日本語訳は Chisel勉強会の4名（mune10, diningyo, aki, HHayashi）で行っています。
-翻訳で用いたオリジナルのバーションは  (2020年3月2日 b20a791 )です。
+翻訳で用いたオリジナルのバーションは（2020年3月2日 b20a791）です。
 オリジナルの更新に合わせて翻訳も新しくしていく予定です。
 日本語版のソースコードはこちら\url{https://github.com/chisel-jp/chisel-book} で公開しています。
 誤訳や表現の誤りの訂正など、小さな修正も歓迎します。
 
-Chiselに興味ある方は、勉強会に自由に参加できます。新型コロナの影響でF2Fの勉強会の開催はできておりませんが、Chisel勉強会のSlackへ登録(URL \url{https://chisel-jp-slackin.herokuapp.com/})いただければ情報交換できると思います。
+Chiselに興味ある方は、勉強会に自由に参加できます。新型コロナの影響でF2Fの勉強会の開催はできておりませんが、Chisel勉強会のSlackへ登録（URL \url{https://chisel-jp-slackin.herokuapp.com/}）いただければ情報交換できると思います。
 
 \subsection*{日本語版での変更点}
 
@@ -572,7 +572,7 @@ Chiselに興味ある方は、勉強会に自由に参加できます。新型�
 \item[2021-02-25] RC 0.4 RISCV勉強会校正版
 \item[2021-08-07] RC 0.5 行番号削除、リスト環境を変更
 \item[2021-08-22] RC 0.6 しおりの文字化け修正, A4、B5、PC版に対応
-\item[2021-08-XX] RC 0.7 校正
+\item[2021-09-13] RC 0.7 校正
 \end{description}
 
 \fi %(日本語版追記)
@@ -627,7 +627,7 @@ but allows you to write hardware generators.
 
 \ifshowtrans %(校正 3/9 mune10)
 Chiselは、オブジェクト指向や関数型言語といったソフトウェア工学の進歩をデジタル回路設計の世界にもちこみます。
-Chiselは、レジスタ転送レベル（RTL）でのハードウェア記述をサポートするだけではなく、ハードウェアジェネレータ(生成器)を記述できます。
+Chiselは、レジスタ転送レベル（RTL）でのハードウェア記述をサポートするだけではなく、ハードウェアジェネレータ（生成器）を記述できます。
 \fi
 
 \ifshoworiginal
@@ -688,12 +688,12 @@ CMOSトランジスタを使ったゲートの生成といったようなデジ�
 向けのデザインに現在用いられている抽象レベルでのデジタル回路設計を説明しています。
 \footnote{著者はターゲットとする技術面ではASICよりもFPGAに詳しいため、この本で紹介されるデザインの最適化はFPGAをターゲットにしている場合があります。}
 この本のための予備知識として、
-\myref{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra(英語)}/
+\myref{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra (英語)}/
 %%begin novalidate
 \href{https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%83%AB%E4%BB%A3%E6%95%B0}{ブール代数(日本語)}
 %%end novalidate
 や
-\myref{https://en.wikipedia.org/wiki/Binary_number}{binary number system(英語)}/
+\myref{https://en.wikipedia.org/wiki/Binary_number}{binary number system (英語)}/
 %%begin novalidate
 \href{https://ja.wikipedia.org/wiki/%E4%BA%8C%E9%80%B2%E6%B3%95}{2進法のシステム(日本語)}
 %%end novalidate
@@ -729,7 +729,7 @@ Chiselは多くの資産を持つVHDLやVerilogよりは確かに小さい言語
 ChiselのパワーはChiselが表現能力の優れた\myref{https://www.scala-lang.org/}{Scala}言語に組み込まれていることにあります。
 ChiselはScalaの「拡張性」\cite{Scala}から機能を継承しています。
 しかしながら、Scala自体はこの本の主たるトピックではありません。
-Scalaの一般的な紹介については、オーダスキー(Scalaの開発者)のテキストブック\cite{Scala}を参照してください。
+Scalaの一般的な紹介については、オーダスキー（Scalaの開発者）のテキストブック\cite{Scala}を参照してください。
 この本は、デジタル回路設計とChisel言語のチュートリアルです。
 Chiselの言語リファレンスではありませんし、完全なチップの設計に関する本でもありません。
 \fi
@@ -809,7 +809,7 @@ When importing a project, {\textbf select the JDK 1.8} you installed before (not
 
 \ifshowtrans %(校正 3/25 diningyo)
 \myref{http://gtkwave.sourceforge.net/}{GTKWave}と\myref{https://www.jetbrains.com/idea/download/}{IntelliJ}（コミュニティ版）をインストールします 。
-プロジェクトをインポートする場合、本節でインストールしたJDK 1.8を選択してください (Java 11ではありません！) 。
+プロジェクトをインポートする場合、本節でインストールしたJDK 1.8を選択してください（Java 11ではありません！）。
 \fi
 
 \subsection{Linux/Ubuntu}
@@ -1588,7 +1588,7 @@ gates and combines the result with signal \code{c} with \emph{or} gates.
 
 \ifshowtrans %(校正 4/23 diningyo)
 Chiselは組み合わせ論理回路を記述するために、C言語やJava、Scala、またその他のプログラミング言語と同様に
-\myref{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra(英語)}/
+\myref{https://en.wikipedia.org/wiki/Boolean_algebra}{Boolean algebra (英語)}/
 %%begin novalidate
 \href{https://ja.wikipedia.org/wiki/%E3%83%96%E3%83%BC%E3%83%AB%E4%BB%A3%E6%95%B0}{ブール代数(日本語)}
 %%end novalidate
@@ -1613,7 +1613,7 @@ Chiselは組み合わせ論理回路を記述するために、C言語やJava、
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/logic}
-  \caption{\code{(a \& b) | c}の論理.信号は単一、もしくは複数のビットになり得る。Chiselの表現と回路図は同じになる。}
+  \caption{\code{(a \& b) | c}の論理。信号は単一、もしくは複数のビットになり得る。Chiselの表現と回路図は同じになる。}
   \label{fig:logic}
 \end{figure}
 \fi
@@ -1890,7 +1890,7 @@ signal \code{b}.
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/mux}
-  \caption{基本的な 2:1 マルチプレクサ.}
+  \caption{基本的な 2:1 マルチプレクサ}
   \label{fig:mux}
 \end{figure}
 \fi
@@ -7247,7 +7247,7 @@ which are practically Mealy machines, are fine as well.
 \section{Exercise}
 \fi
 \ifshowtrans %(校正)
-\section{演習)}
+\section{演習}
 \fi
 
 \ifshoworiginal
@@ -7292,7 +7292,6 @@ Martin: but this is shown at the Chisel homepage without an FSM.}
 \ifshoworiginal
 \chapter{Communicating State Machines}
 \fi
-\ifshowtrans %(校正)
 \ifshowtrans %(校正)
 \chapter{協調型ステートマシン} % (仮訳 12/20 校正1 01/01 aki  第9章  05/07 HHayashi ========================================================================)
 \fi
@@ -8466,7 +8465,7 @@ Chiselのオブジェクトである\code{VecInit}は\code{Seq}のようなシ�
 
 \index{File reading}
 \ifshowtrans %(追記 12/30 mune10)
-\index{ファイル読み出し？}
+\index{ファイル読み出し}
 \fi
 
 \ifshoworiginal
