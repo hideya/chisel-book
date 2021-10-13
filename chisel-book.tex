@@ -426,7 +426,7 @@ Staff Engineer, SiFive \\
 \ifshowtrans %(校正 3/5 mune10)
 \noindent ジャック・ケーニッヒ\\
 ChiselとFIRRTLメンテナ\\
-スタッフエンジニア、SiFive社
+SiFive社 スタッフエンジニア
 \fi
 
 \ifshoworiginal
@@ -476,7 +476,7 @@ The approach of this book is to present small to medium-sized typical hardware c
 \section*{Foreword for the Second Edition}
 \fi
 \ifshowtrans %(校正)
-\section*{第2版のまえがき}
+\section*{第二版のまえがき}
 \fi
 
 \ifshoworiginal
@@ -988,7 +988,7 @@ That hardware then blinks the LED at 1~Hz.
 コード~\ref{lst:chisel:hello}はLチカの処理をChiselで実装したものです。
 次の章でこのコードの詳細について解説するので、ここではコードの詳細について理解する必要はありません。
 注意しておきたいのは回路は通常50MHzといった高速なクロックで動作するため、目に見える点滅を生成するためにHzレンジのタイミングのカウンタが必要になります。
-上記の例では0から25000000-1までカウントし、点滅信号をトグルし（\code{blkReg := \textasciitilde blkReg}）、カウンタを再スタートします。
+上記の例では$0$から$25000000-1$までカウントし、点滅信号をトグルし（\code{blkReg := \textasciitilde blkReg}）、カウンタを再スタートします。
 これによってハードウェアはLEDを1Hzで点滅させます。
 \fi
 
@@ -2240,6 +2240,7 @@ processor, like the 32-bit version of \myref{https://en.wikipedia.org/wiki/RISC-
 \ifshowtrans %(校正 7/15 diningyo)
 \noindent レジスタファイルの各要素へは、インデックスを用いてアクセスを行い、それらは通常のレジスタと同様に使用できます。
 \fi
+
 \shortlist{code/reg_file_access.txt}
 
 \ifshoworiginal
@@ -2361,7 +2362,7 @@ with \code{val sw = Input(UInt(2.W))}.
 \fi
 
 \ifshowtrans %(校正 8/2 diningyo)
-導入の演習では、ハードウェア版\emph{Hello World}であるFPGAボードを使ったLチカを実装しました(from \myref{https://github.com/schoeberl/chisel-examples}{chisel-examples})。
+導入の演習では、ハードウェア版\emph{Hello World}であるFPGAボードを使ったLチカを実装しました(コードは\myref{https://github.com/schoeberl/chisel-examples}{chisel-examples}にあります)。
 この実装では、唯一の内部ステートと、1つのLED出力のみで、入力はありませんでした。
 このプロジェクトを別のフォルダにコピーして、変数\code{io}の\code{Bundle}に\code{val sw = Input(UInt(2.W))}を追加してください。
 \fi
@@ -4097,7 +4098,7 @@ A try with the Chisel operator \code{:=}, as shown below,
 \fi
 
 \ifshowtrans %(校正 9/24 diningyo)
-これは"読み込み専用の変数への再代入は出来ない"という理由で、実行時例外が発生します。
+これは``読み込み専用の変数への再代入は出来ない''という理由で、実行時例外が発生します。
 \fi
 
 \ifshoworiginal
@@ -4387,6 +4388,7 @@ operation \code{<<}.
 \ifshowtrans %(校正 10/5 diningyo)
 テーブルはデコーダの機能をとても読みやすく表現しますが、少し冗長でもあります。このテーブルを調べてみると、1を\code{sel}だけ左にシフトした値となるという規則に気付きます。この規則を利用すると、先程のデコーダはChiselのシフト演算子\code{<<}を使って次のように表現できます。
 \fi
+
 \shortlist{code/encdec_shift.txt}
 
 \ifshoworiginal
@@ -5110,7 +5112,7 @@ value of the function, in this example, the counting register \code{cntReg}.
 \fi
 
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
-\noindent 関数\code(genCounter)の最後の文は、関数の戻り値であり、この例ではカウントレジスタ\code(cntReg)です。
+\noindent 関数\code{genCounter}の最後の文は、関数の戻り値であり、この例ではカウントレジスタ\code{cntReg}です。
 \fi
 
 \ifshoworiginal
@@ -5333,8 +5335,8 @@ that our counter reached -1. Here it is, the counter created by a nerd:
 \ifshowtrans %(校正 6/20 mune10 校正1 12/29 aki)
 しかし、巧妙なハードウェア設計者が引き出せるトリックがもう一つあります。
 カウントアップもしくはカウントダウンを行っていくには、すべてのカウントビットとの比較が必要でした。
-しかし、N-2から-1までカウントするとどうなるでしょうか？負の数は最上位ビットが1に設定されており、正の数はこのビットが0に設定されています。
-このビットだけをチェックして，カウンタが-1に達したことを検出すればよいのです。これがオタクが作ったカウンタです。
+しかし、$N-2$から$-1$までカウントするとどうなるでしょうか？負の数は最上位ビットが$1$に設定されており、正の数はこのビットが$0$に設定されています。
+このビットだけをチェックして，カウンタが$-1$に達したことを検出すればよいのです。これがオタクが作ったカウンタです。
 \fi
 
 \shortlist{code/nerd_counter.txt}
@@ -8625,7 +8627,7 @@ different implementations) and then checks that \code{tick} repeats every $n$ cl
 
 \ifshowtrans %(校正 12/30 diningyo)
 \emph{ticker}を使って作成した異なるすべての論理は、単一のテストベンチを用いてテストできます。
-方法は簡単で、テストベンチで\emph{Ticker}の派生クラスを受け入れるようにする\emph{だけ}です。
+方法は簡単で、テストベンチで\code{Ticker}の派生クラスを受け入れるようにする\emph{だけ}です。
 コード~\ref{lst:ticker:test}はテスタのためのコードです。
 \code{TickerTester}は複数のパラメータを持ちます。1つ目の型パラメータ \code{[T <: Ticker]} で\code{Ticker}または\code{Ticker}を継承するクラスを受け付けることができます。2つ目は\code{T}の型を持つDUTで、3つ目は期待するカウントパルスのクロックサイクル数です。
 テスタではカウントパルスの最初の出力を待ちます。これはテストするDUTの論理によって、スタートが異なる可能性があるためです。その後\code{tick}が$n$の周期で繰り返すことを確認します。
@@ -8652,8 +8654,8 @@ less hardware by avoiding the comparator.
 \ifshowtrans %(校正 12/30 diningyo)
 最初の簡単なティッカーといくつかの\code{println}デバッグを用いて、テスタ自身のテストができます。
 このようにして簡単なティッカーとテスタが正しいことを確認したのち、異なるバージョンのティッカーの実装へ進むことができます。
-コード~\ref{lst:ticker:down}は0までカウントダウンカウンタを使ったカウントパルスの生成を示しています。
-コード~\ref{lst:ticker:nerd}は-1までカウントダウンする凝った実装で、コンパレータを使用しないため、より少ないハードウェアで済みます。
+コード~\ref{lst:ticker:down}は$0$までカウントダウンカウンタを使ったカウントパルスの生成を示しています。
+コード~\ref{lst:ticker:nerd}は$-1$までカウントダウンする凝った実装で、コンパレータを使用しないため、より少ないハードウェアで済みます。
 \fi
 
 \ifshoworiginal
@@ -8669,7 +8671,7 @@ less hardware by avoiding the comparator.
 \fi
 
 \ifshowtrans %(校正 12/31 mune10)
-\longlist{code/nerd_ticker.txt}{-1までカウントダウンするカウンタを使ったティック(カウントパルス)の生成}{lst:ticker:nerd}
+\longlist{code/nerd_ticker.txt}{$-1$までカウントダウンするカウンタを使ったティック(カウントパルス)の生成}{lst:ticker:nerd}
 \fi
 
 \ifshoworiginal
@@ -9121,7 +9123,9 @@ when both \code{ready} and \code{valid} are asserted.
 \ifshowtrans %(仮訳 12/23 校正1 01/02 aki)
 まず、インターフェースであるポートの定義が必要です。
 UART設計では、送信機から見た方向で、ready/validハンドシェイクインターフェースを使用します。
+
 \shortlist{code/uart_channel.txt}
+
 ready/validインターフェースの慣習は、\code{ready}と\code{valid}の両方がアサートされたときにデータが転送されるというものです。
 \fi
 
@@ -10788,7 +10792,7 @@ See also \myref{https://github.com/freechipsproject/chisel3}{some notes at the C
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-\myref{https://github.com/freechipsproject/chisel3}{some notes at the Chisel repo}も参照しておいてください。
+\myref{https://github.com/freechipsproject/chisel3}{Chiselリポジトリの記載事項}も参照しておいてください。
 \fi
 
 \ifshoworiginal
