@@ -19,18 +19,22 @@
 
 \usepackage{color}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{gray}{rgb}{0.6,0.6,0.6}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{lightgray}{rgb}{0.93,0.93,0.93}
 
 % Default settings for code listings
 \ifbook
 \lstset{%frame=lines,
   language=chisel,
-  aboveskip=3mm,
-  belowskip=3mm,
+  frame=single,
+  rulecolor=\color{gray},
+  backgroundcolor=\color{lightgray},
+  aboveskip=4mm,
+  belowskip=4mm,
   showstringspaces=false,
   columns=fixed, % basewidth=\mybasewidth,
-  basicstyle={\small\ttfamily},
+  basicstyle={\codesize\ttfamily},
   numbers=none,
   numberstyle=\footnotesize,
   % identifierstyle=\color{red},
@@ -64,12 +68,18 @@
 }
 \fi
 
+% \lstnewenvironment{chisel}[1][]
+% {\lstset{language=chisel,#1}}
+% {}
 \lstnewenvironment{chisel}[1][]
-{\lstset{language=chisel,#1}}
-{}
+  {\noindent\minipage{\linewidth}\vspace{0.5\baselineskip}\lstset{language=chisel,#1}}
+  {\endminipage}
 
-\newcommand{\shortlist}[1]{{\lstinputlisting[nolol]{#1}}}
+% \newcommand{\shortlist}[1]{{\lstinputlisting[nolol]{#1}}}
+\newcommand{\shortlistbreakable}[1]{{\lstinputlisting[nolol]{#1}}}
+\newcommand{\shortlist}[1]{\noindent\begin{minipage}{\linewidth}\vspace{0.5\baselineskip}\lstinputlisting[nolol]{#1}\end{minipage}}
 
-\newcommand{\longlist}[3]{{\lstinputlisting[float, caption={#2}, label={#3}, frame=tb, captionpos=b]{#1}}}
+\newcommand{\longlist}[3]{{\lstinputlisting[basicstyle={\codesize\ttfamily}, float, caption={#2}, label={#3}, frame=tb, captionpos=b]{#1}}}
 
-\newcommand{\verylonglist}[3]{{\lstinputlisting[caption={#2}, label={#3}, frame=tb, captionpos=b]{#1}}}
+\newcommand{\verylonglist}[3]{{\lstinputlisting[basicstyle={\codesize\ttfamily}, caption={#2}, label={#3}, frame=tb, captionpos=b]{#1}}}
+

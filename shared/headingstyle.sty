@@ -1,0 +1,46 @@
+\usepackage{overpic}
+\usepackage[dvipdfmx]{color}
+
+\definecolor{HeadingColor}{rgb}{0.25,0.25,0.25}
+\definecolor{ShadedBackground}{rgb}{0.9,0.9,0.9}
+
+\def\@boxwithchapternum#1{%
+  % \if@openright\else\noindent\hspace{-20mm}\fi%
+  \noindent\hspace{-5mm}%
+  \raisebox{-4.25mm}{
+  \begin{overpic}[width=10mm]{shared/chapter-marker}
+    \put(0,27){\makebox[10mm]{\huge\textbf{\color{white}#1}}}
+  \end{overpic}}
+  \hspace{2mm}
+}
+
+\def\@chaptertitle#1{%
+  \parbox{\textwidth}{%
+%    \raggedright\Huge{\color{HeadingColor}\mdseries  #1}}}
+    \raggedright\huge{\color{HeadingColor}\mdseries  #1}}}
+
+\def\@makechapterhead#1{%
+  % \vspace*{\chapterheadskip}%
+  \vspace*{0mm}%
+  \mbox{
+    {\parindent \z@ \raggedright \headingfont
+      \ifnum \c@secnumdepth >\m@ne
+        \if@mainmatter
+          % box with chapter number
+          \@boxwithchapternum{\thechapter}
+          \interlinepenalty\@M
+          \@chaptertitle{#1}
+        \else
+          \hspace{-4mm}\interlinepenalty\@M
+          \@chaptertitle{#1}
+        \fi
+      \else
+        \hspace{-4mm}\interlinepenalty\@M
+        \@chaptertitle{#1}
+      \fi
+    }}
+    \par\nobreak%
+    % \vskip 40\p@
+    \vskip 30\p@
+  }
+

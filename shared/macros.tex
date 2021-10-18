@@ -1,0 +1,132 @@
+\setcounter{errorcontextlines}{400}
+
+% line breaking tolerances
+\tolerance=1000  % usually 200, infinite=10000
+% last ditch effort: how much space OK to insert
+%   in a line to avoid overfull
+\setlength{\emergencystretch}{3em}
+\usepackage{morewrites}
+\usepackage{ifthen}
+\usepackage{changepage}\strictpagecheck
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{fancyvrb}
+\usepackage{verbatim}
+\usepackage{amsthm}
+\usepackage{endnotes}
+% \usepackage{listings} \input{listingdefaults}
+% \usepackage{makeidx}
+%   \makeindex
+%\usepackage[columns=2,columnsep=1em,font=footnotesize,hangindent=0.25em,subindent=0.75em,subsubindent=1.5em,totoc]{idxlayout}
+\usepackage{enumerate}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage{multirow}
+\usepackage{units}
+\usepackage{pdfpages}
+% \usepackage{ragged2e} % everysel
+\usepackage{mathtools}
+\usepackage{placeins}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{200B}{\hspace{0pt}}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[tocindentauto]{tocstyle}
+
+\PassOptionsToPackage{hyphens}{url}\usepackage[hidelinks]{hyperref}
+
+\usepackage{shared/headingstyle}
+
+\renewcommand{\emph}[1]{\textsf{\textgt{#1}}}
+\renewcommand{\bf}{\sf}
+
+% change the font used in table to sf
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\sf \oldtabular}
+
+
+%
+% make caption font smaller (tip from 
+% http://dcwww.camd.dtu.dk/~schiotz/comp/LatexTips/LatexTips.html#captfont)
+%
+\newcommand{\captionfonts}{\sffamily\footnotesize}
+
+\makeatletter  % Allow the use of @ in command names
+\long\def\@makecaption#1#2{%
+  % \begin{centering}
+  \vskip\abovecaptionskip % space between figure & caption
+  \sbox\@tempboxa{{\captionfonts \B{#1\, #2}}}%
+  \ifdim \wd\@tempboxa >\hsize
+    {\captionfonts \B{#1\, #2}\par}
+  \else
+    \hbox to\hsize{\hfil\box\@tempboxa\hfil}%
+  \fi
+  % \end{centering}
+  \vskip\belowcaptionskip% space between caption & text
+}
+\makeatother   % Cancel the effect of \makeatletter
+
+
+%
+% ja: from textbook.cls
+%
+% set Helvetica as default font for section/chap headings
+\newcommand{\headingdefault}{ofu}% AvantGarde; use phvb for helvetical-bold
+\newcommand{\headingfont}{%
+  \sffamily
+}
+
+\def\chapterheadskip{0.5in}
+
+\pagestyle{fancy}
+
+\newlength\headerwidth
+\addtolength\headerwidth{\marginparsep}
+\addtolength\headerwidth{\marginparwidth}
+\fancyheadoffset[RO,LE]{\the\headerwidth}
+\fancyfootoffset[RO,LE]{\the\headerwidth}
+
+\newcommand{\newheadings}{
+  \def\chaptermark##1{\markboth{第 \thechapter 章 \hskip1zw ##1}{}}
+  \def\sectionmark##1{\markright{\thesection \hskip1zw ##1}}
+  \fancyhf{}
+  \fancyhead[RO]{\sf\rightmark}
+  \fancyhead[LE]{\sf\leftmark}
+  \fancyfoot{}
+  \fancyfoot[LE]{\sf\thepage}
+  \fancyfoot[RO]{\sf\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\newcommand{\appendixheadings}{
+  \def\chaptermark##1{\markboth{付録 \thechapter  \hskip1zw ##1}{}}
+  \def\sectionmark##1{\markright{\thesection \hskip1zw ##1}}
+  \fancyhf{}
+  \fancyhead[RO]{\sf\rightmark}
+  \fancyhead[LE]{\sf\leftmark}
+  \fancyfoot{}
+  \fancyfoot[LE]{\sf\thepage}
+  \fancyfoot[RO]{\sf\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+\fancypagestyle{headings}{\newheadings}
+\fancypagestyle{appendix}{\appendixheadings}
+\fancypagestyle{plainhead}{\newheadings}
+\fancypagestyle{plainfoot}{\newheadings}
+\fancypagestyle{myheadings}{\newheadings}
+\fancypagestyle{plain}{\newheadings}
+
+\fancypagestyle{foreword}{
+  \def\chaptermark##1{\markboth{##1}{}}
+  \def\sectionmark##1{\markright{##1}}
+  \fancyhf{}
+  \fancyhead[RO]{\sf\rightmark}
+  \fancyhead[LE]{\sf\leftmark}
+  \fancyfoot{}
+  \fancyfoot[LE]{\sf\thepage}
+  \fancyfoot[RO]{\sf\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}

@@ -9,6 +9,13 @@
 *.lot
 *.bbl
 *.ilg
+*.cb
+*.cb2
+*.codefiles
+*.dvi
+*.mw
+*.out
+*.screencasts.yml
 *.pdf
 
 code/

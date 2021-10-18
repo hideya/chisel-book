@@ -11,12 +11,23 @@ gencode:
 fig:
 	make -C figures
 
+quick:
+	-platex $(DOC)
+	dvipdfmx $(DOC)
+
+mendex:
+	-platex $(DOC)
+	mendex -d $(DOC).dic -g -s $(DOC).ist $(DOC)
+	-platex $(DOC)
+	dvipdfmx $(DOC)
+
 book:
-	-pdflatex $(DOC)
+	-platex $(DOC)
 	bibtex $(DOC)
-	makeindex $(DOC)
-	-pdflatex $(DOC)
-	-pdflatex $(DOC)
+	-platex $(DOC)
+	mendex -d $(DOC).dic -g -s $(DOC).ist $(DOC)
+	-platex $(DOC)
+	dvipdfmx $(DOC)
 
 
 
@@ -25,6 +36,7 @@ veryclean:
 
 clean:
 	rm -fr *.aux *.bbl *.blg *.log *.lof *.lot *.toc *.gz *.lol # *.pdf
+	rm -fr *.cb *.cb2 *.codefiles *.dvi *.mw *.out *.screencasts.yml
 	rm -rf code
 	rm -rf test_run_dir
 
