@@ -57,9 +57,11 @@
 % A4 for Japanese version （しばらくは、A4で印刷して校正用する体裁にしたいと思います）
 %\setlength{\paperwidth}{21.0cm} \setlength{\paperheight}{29.7cm}
 % B5 for Japanese version
-\setlength{\paperwidth}{18.2cm} \setlength{\paperheight}{25.7cm}
+%\setlength{\paperwidth}{18.2cm} \setlength{\paperheight}{25.7cm}
 % PC size for Japanese Book
 %\setlength{\paperwidth}{18.2cm} \setlength{\paperheight}{23.3cm}
+% A5 size for Japanese Book
+\setlength{\paperwidth}{14.8cm} \setlength{\paperheight}{21.0cm}
 
 %\typearea{calc} % without BCOR results to a DIV of 8 for 11pt
 \typearea[1cm]{18} % TODO: check if 1 cm is the correct number
@@ -85,7 +87,7 @@
 \ifbook
 \else
 % 2021-08-20 remove ToC link at the bottom
-\cfoot{\hyperlink{contents}{{\textnormal{目次}}}}
+%\cfoot{\hyperlink{contents}{{\textnormal{目次}}}}
 \fi
 \fi
 
@@ -377,7 +379,7 @@ Chisel is unlike most languages in that it is embedded in another programming la
 ChiselはそれがScalaの中に埋め込まれているという点で、他のプログラミング言語とは異なります。
 基本的には、同期デジタル回路を表現するために必要なプリミティブを含むクラスと機能をライブラリ化したものが Chisel です。
 Chiselのデザインは実際にはScalaのプログラムで、実行可能な回路を\emph{生成}します。
-多くの人にとって、これは直感に反するかもしれません： 「なぜ、Chisel をVHDLやSystemVerilogのようなスタンドアロンの言語にしないのだろうか？」。
+多くの人にとって、これは直感に反するかもしれません： 「なぜ、Chisel をVHDLやSystemVerilogのようなスタンドアロンの言語にしないのだろうか？」
 この質問に対する私の答えは次のとおりです。
 ソフトウェアの世界では、過去数十年間かつてないほど、様々な設計手法のイノベーションが起こりました。
 新しいハードウェアの言語にこれらの技術を適用しなくても、最新のプログラミング言語を \emph{使用する} だけで、これらのメリットを享受することができるのです。
@@ -548,22 +550,28 @@ Many of your questions have helped to shape this book.
 \clearpage
 \section*{日本語訳について}
 
-この日本語訳は Chisel勉強会の4名（mune10, diningyo, aki, HHayashi）で行っています。
-翻訳で用いたオリジナルのバーションは（2020年3月2日 b20a791）です。
-オリジナルの更新に合わせて翻訳も新しくしていく予定です。
+この日本語訳の作成は Chisel勉強会で行っています。
+本書の校正にはRISC-V勉強会も含めて多くの方に助けていただきました。この場を借りてお礼申し上げます。
 日本語版のソースコードはこちら\url{https://github.com/chisel-jp/chisel-book} で公開しています。
-誤訳や表現の誤りの訂正など、小さな修正も歓迎します。
-
-Chiselに興味ある方は、勉強会に自由に参加できます。新型コロナの影響でF2Fの勉強会の開催はできておりませんが、Chisel勉強会のSlackへ登録（URL \url{https://chisel-jp-slackin.herokuapp.com/}）いただければ情報交換できると思います。
+翻訳で用いたオリジナルのバーションは（2020年3月2日 b20a791）です。
+Githubの方ではオリジナルの更新に合わせて翻訳も新しくしていく予定です。
+誤訳や表現の誤りの訂正、改善箇所などありましたら、GhithubでPRを出していただくか、Chisel勉強会のSlackで指摘していただけると助かります。
+Chiselに興味ある方は、Chisel勉強会に自由に参加できます。
+Chisel勉強会のSlackへ登録はこちらのURL（\url{https://chisel-jp-slackin.herokuapp.com/}）からお願いします。
 
 \subsection*{日本語版での変更点}
 
+% 書籍版ではこの部分は修正の必要あり
 \begin{itemize}
-    \item Wikipediaへのリンクは(英語)(日本語)の併記としました。これは日本語版Wikipediaの記述が不十分な用語があるためです。
     \item 原書の「デジタルデザイン」は、日本語版ではより具体的に「デジタル回路設計」としました。
-    \item ソースコードのリストに薄いグレーの背景色を設定しました。また、コード目次に列挙されるソースコードにつきましては、挿入される位置が本文とはずれるため、枠と行番号を追加することで本文中のソースコードと区別しやすいように変更しました。
+    \item 日本語の参考文献の追加
+    \item 日本語索引の追加
+    \item ソースコードのリストに薄いグレーの背景色を設定しました。
+    \item また、コード目次に列挙されるソースコードにつきましては、挿入される位置が本文とはずれるため、枠と行番号を追加することで本文中のソースコードと区別しやすいように変更しました。
+    \item Wikipediaへのリンクは(英語)(日本語)の併記としました。これは日本語版Wikipediaの記述が不十分な用語があるためです。
 \end{itemize}
 
+% 書籍版ではこのsubsectionは削除で良いと思います
 \subsection*{日本語版の履歴}
 
 \begin{description}
@@ -573,6 +581,7 @@ Chiselに興味ある方は、勉強会に自由に参加できます。新型�
 \item[2021-08-07] RC 0.5 行番号削除、リスト環境を変更
 \item[2021-08-22] RC 0.6 しおりの文字化け修正, A4、B5、PC版に対応
 \item[2021-09-13] RC 0.7 校正
+\item[2021-10-18] RC 0.8 校正
 \end{description}
 
 \fi %(日本語版追記)
@@ -596,7 +605,7 @@ to enable you to build more complex, interacting digital systems in a shorter ti
 \fi
 
 \ifshowtrans %(校正 3/6 mune10)
-本書は、近代的なハードウェア構築言語である \myref{https://www.chisel-lang.org/}{Chisel}~\cite{chisel:dac2012} を使ったデジタルシステム設計について解説します。
+本書は、現代的なハードウェア構築言語である \myref{https://www.chisel-lang.org/}{Chisel}~\cite{chisel:dac2012} を使ったデジタルシステム設計について解説します。
 本書では、一般的なデジタル回路設計の書籍に比べ、より高い抽象レベルでの設計に注目し、より複雑で、相互作用のあるデジタルシステムを短期間で開発できるようになることを目指します。
 \fi
 
@@ -614,7 +623,7 @@ It is perfectly fine to use Chisel as your first hardware description language.
 \ifshowtrans %(校正 3/6 mune10)
 本書およびChiselは、（1）ハードウェア設計者と（2）ソフトウェアプログラマの2つの開発者のグループを対象としています。
 VHDLやVerilogになれたハードウェア設計者は、Python、Java、またはTclのような言語も使いこなしながらハードウェアの開発を進めますが、今後はハードウェアの生成が言語の機能の一部となっている単一のハードウェア構築言語を使って開発を進めることができます。
-ハードウェア設計にも興味（例えば、インテルが性能向上にFPGAをチップに取り込むなど）があるソフトウェアプログラマにとっては、
+ハードウェア設計にも興味がある（例えば、インテルが性能向上のためにFPGAを将来チップに取り込むために）ソフトウェアプログラマにとっては、
 最初に覚えるハードウェア記述言語としてChiselは最適です。
 \fi
 
@@ -725,7 +734,7 @@ a Chisel language reference, nor is it a book on complete chip design.
 Chisel自体は大きな言語ではありません。
 基本的な文法は\myref{https://github.com/freechipsproject/chisel-cheatsheet/releases/latest/download/chisel_cheatsheet.pdf}{早見表}に収まる程度なので、数日で習得することができます。
 したがって、本書もそんなにボリュームのある本ではありません。
-Chiselは多くの資産を持つVHDLやVerilogよりは確かに小さい言語です。
+Chiselは多くの資産を持つVHDLやVerilogよりは確実に小さい言語です。
 ChiselのパワーはChiselが表現能力の優れた\myref{https://www.scala-lang.org/}{Scala}言語に組み込まれていることにあります。
 ChiselはScalaの「拡張性」\cite{Scala}から機能を継承しています。
 しかしながら、Scala自体はこの本の主たるトピックではありません。
@@ -745,7 +754,7 @@ principles of good hardware description style.
 \fi
 
 \ifshowtrans %(校正 3/15 diningyo)
-本書に掲載されているコード例はすべてコンパイルが可能で、テスト済みの完全なプログラムから抽出されています。
+本書に掲載されているコード例はすべてコンパイルが可能で、テスト済みの完全なプログラムから抜粋されています。
 そのためコードにはシンタックスエラーは含まれていません。
 コード例は本書の\myref{https://github.com/schoeberl/chisel-book}{GitHubリポジトリ}に公開されています。
 本書ではChiselのコードだけでなく、良いハードウェアの記述スタイルの原則や便利なデザインについても紹介しています。
@@ -809,7 +818,7 @@ When importing a project, {\textbf select the JDK 1.8} you installed before (not
 
 \ifshowtrans %(校正 3/25 diningyo)
 \myref{http://gtkwave.sourceforge.net/}{GTKWave}と\myref{https://www.jetbrains.com/idea/download/}{IntelliJ}（コミュニティ版）をインストールします 。
-プロジェクトをインポートする場合、本節でインストールしたJDK 1.8を選択してください（Java 11ではありません！）。
+プロジェクトをインポートする場合、本節でインストールしたJDK 1.8を選択してください (Java 11ではありません！) 。
 \fi
 
 \subsection{Linux/Ubuntu}
@@ -864,7 +873,8 @@ Install a \myref{https://git-scm.com/download/win}{git client}.
 \myref{https://adoptopenjdk.net/}{AdoptOpenJDK}からJava OpenJDKをインストールします。
 ChiselとScalaもWindowsにインストールして使用できます。
 \myref{http://gtkwave.sourceforge.net/}{GTKWave}と\myref{https://www.jetbrains.com/idea/download/}{IntelliJ}  (コミュニティ版) をインストールします。
-プロジェクトをインポートする際には、インストール済みの {\textbf JDK 1.8を選択し} てください  (Java 11ではありません!) 。その前に\myref{https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html}{Windowsでのsbtのインストール}を参考にして、Windowsインストーラで\code{sbt}をインストールします。
+プロジェクトをインポートする際には、インストール済みの {\textbf JDK 1.8を選択し} てください（Java 11ではありません!）。
+その前に\myref{https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html}{Windowsでのsbtのインストール}を参考にして、Windowsインストーラで\code{sbt}をインストールします。
 また、\myref{https://git-scm.com/download/win}{gitクライアント}をインストールします。
 \fi
 
@@ -987,7 +997,7 @@ That hardware then blinks the LED at 1~Hz.
 \ifshowtrans %(校正 4/11 diningyo)
 コード~\ref{lst:chisel:hello}はLチカの処理をChiselで実装したものです。
 次の章でこのコードの詳細について解説するので、ここではコードの詳細について理解する必要はありません。
-注意しておきたいのは回路は通常50MHzといった高速なクロックで動作するため、目に見える点滅を生成するためにHzレンジのタイミングのカウンタが必要になります。
+注意しておきたいのは回路は通常50MHzといった高速なクロックで動作するため、目に見える点滅を生成するためには、Hz単位のタイミングを導き出すカウンタが必要になります。
 上記の例では$0$から$25000000-1$までカウントし、点滅信号をトグルし（\code{blkReg := \textasciitilde blkReg}）、カウンタを再スタートします。
 これによってハードウェアはLEDを1Hzで点滅させます。
 \fi
@@ -1030,7 +1040,7 @@ to generate a project from the sbt project configuration in \code{build.sbt}.
 \fi
 
 \ifshowtrans %(校正 4/12 mune10)
-バックグラウンドでコンパイラが動いている統合開発環境（IDE）を利用することで、コーディングの高速化が可能になると言われています。
+しかしながら、コンパイラがバックグラウンドで動いている統合開発環境（IDE）を利用することで、コーディングの高速化が可能です。
 ChiselはScalaのライブラリなので、ScalaをサポートしているIDEはすべてChiselに適したIDEでもあります。
 例えば、 \code{build.sbt} で構成された sbt プロジェクトから
 \myref{https://www.jetbrains.com/help/idea/discover-intellij-idea-for-scala.html}{IntelliJ} や
@@ -1058,11 +1068,11 @@ and import that project into Eclipse.\footnote{This function needs the Eclipse p
 \fi
 
 \ifshowtrans %(校正 4/12 mune10)
-Eclipseでは、
+Eclipseでは、以下でプロジェクトを生成でき、
 \begin{lstlisting}
 $ sbt eclipse
 \end{lstlisting}
-で、そのプロジェクトをEclipseにインポートします。\footnote{sbt用のEclipseプラグインが必要です。}
+そのプロジェクトをEclipseにインポートできます。\footnote{sbt用のEclipseプラグインが必要です。}
 \fi
 
 \ifshoworiginal
@@ -1079,7 +1089,7 @@ To import an \code{sbt} based project open the folder with \emph{File - Open}.
 
 \ifshowtrans %(校正 4/12 mune10)
 \myref{https://code.visualstudio.com/}{Visual Studio Code}もChisel 用 IDEとして使えます。
-\myref{https://marketplace.visualstudio.com/items?itemName=scalameta.metals/}{Scala Metals} 拡張が Scala のサポートを提供します。
+\myref{https://marketplace.visualstudio.com/items?itemName=scalameta.metals/}{Scala Metals} エクステンションが Scala のサポートを提供します。
 左のバーで \emph{Extensions}を選択、
 \emph{Metals} をサーチして、
 \emph{Scala (Metals)}をインストールします。
@@ -1198,22 +1208,25 @@ Chiselの公式ドキュメントやその他の関連ドキュメントはオ�
 
 \begin{itemize}
 \item \myref{https://diningyo.booth.pm/items/1718207}
-{Chiselを始めたい人に読んでほしい本} 
-(だいにんぎょー 著) 
-は、ChiselとそのもととなるScalaの日本語で最初の解説書です。 \myref{https://www.amazon.co.jp/dp/4844378694/ref=cm_sw_em_r_mt_dp_.tvGFb8W1QH5Y}
+{Chiselを始めたい人に読んでほしい本}
+(だいにんぎょー 著)
+は、ChiselとそのもととなるScalaの日本語で最初の解説書です。 \myref{https://www.amazon.co.jp/dp/4844378694}
 {Amazon}でも買えます。
 \item \myref{https://diningyo.booth.pm/items/1888995}
 {Chiselクイックリファレンス}
 (だいにんぎょー 著)
 はchisel3.utilパッケージのリファレンス集です。
-\item \myref{https://www.amazon.co.jp/dp/4802098057/ref=cm_sw_em_r_mt_dp_5AvGFb1ZHVJTP}
-{プログラマのためのFPGAによるRISC-Vマイコンの作り方} 
-(堀江徹也 著) 
+\item \myref{https://www.amazon.co.jp/dp/4802098057}
+{プログラマのためのFPGAによるRISC-Vマイコンの作り方}
+(堀江徹也 著)
 はChiselの紹介から始まり、SiFive社のフリーのRISC-V SoC実装である Freedomを例にFPGAの開発までカバーします。
-\item \myref{https://www.amazon.co.jp/dp/4297123053/ref=cm_sw_em_r_mt_dp_9X78M1AVEEB4X9F0B2QF}
+\item \myref{https://www.amazon.co.jp/dp/4297123053}
 {RISC-VとChiselで学ぶ はじめてのCPU自作 ――オープンソース命令セットによるカスタムCPU実装への第一歩}
 (⻄⼭ 悠太朗、井⽥健太 著)
 はChiselを利用したCPUの作り方を解説しています。
+\item \myref{https://www.amazon.co.jp/dp/B09C3Y8SHY}
+{Chiselで始めるFPGA電子工作}
+(堀江徹也 著)
 \end{itemize}
 \fi %(日本語版追記)
 
@@ -1314,8 +1327,8 @@ Explore which frequencies express best those two different emotions.
 
 \ifshowtrans %(校正 4/14 mune10)
 次に、点滅頻度を遅い値または速い値に変更して、ビルドプロセスを再実行します。
-点滅周波数と点滅パターンは、異なる「状態 (emotion)」を伝えます。
-例えば、遅い点滅のLEDはすべてが正常であることを示し、速い点滅のLEDは異常状態を示します。
+点滅周波数や点滅パターンは、異なる「心的印象 (emotion)」を与えます。
+例えば、遅い点滅のLEDはすべてが正常であるという印象を、速い点滅のLEDは異常状態を知らせます。
 どの周波数がこれらの2つの異なる「状態 (emotion)」を最もよく表現しているかを探ってみましょう。
 \fi
 
@@ -1345,7 +1358,7 @@ instruction to simulate the blinking LED:
 \fi
 
 \ifshowtrans %(校正 4/14 mune10)
-（まだ）FPGAボードをお持ちでない場合でも、LEDの点滅の例を実行することができます。
+FPGAボードを（まだ）お持ちでない場合でも、LEDの点滅の例を実行することができます。
 Chiselシミュレーションを使用します。
 シミュレーション時間が長くなりすぎないように、Chiselコードのクロック周波数を50000000から50000に変更してください。
 以下のコマンドを実行してLEDの点滅をシミュレーションします。
@@ -1372,7 +1385,7 @@ with the assumed clock frequency to see the simulated blinking LED.
 \chapter{Basic Components}
 \fi
 \ifshowtrans %(校正)
-\chapter{基本コンポーネント} % (校正  第2章  ========================================) 04/30 HHayashi 
+\chapter{基本コンポーネント} % (校正  第2章  ========================================) 04/30 HHayashi
 \fi
 
 \ifshoworiginal
@@ -4721,7 +4734,7 @@ assignment statement.
 レジスタはリセット時に初期化することができます。
 \code{reset}信号は、\code{clock}信号と同じく、Chiselでは暗黙的です。
 レジスタコンストラクタの\code{RegInit}にパラメータとしてリセット値、例えばゼロを、与えます。
-レジスタへの入力は、Chisel代入文で行います。
+レジスタへの入力は、Chiselのアップデート演算子で行います。
 \fi
 
 \shortlist{code/sequ_reg_init.txt}
@@ -4863,7 +4876,7 @@ output of the register.
 
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 典型的なデザインパターンは、イネーブル信号を持つレジスタです。
-イネーブル信号が\code{true}(高)の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
+イネーブル信号が\code{true}(High)の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
 イネーブル信号付きレジスタは、同期リセットと同様に、レジスタの入力にマルチプレクサを使用して実装することができます。
 マルチプレクサへの入力の1つは、レジスタの出力のフィードバックです。
 \fi
@@ -5336,7 +5349,7 @@ that our counter reached -1. Here it is, the counter created by a nerd:
 しかし、巧妙なハードウェア設計者が引き出せるトリックがもう一つあります。
 カウントアップもしくはカウントダウンを行っていくには、すべてのカウントビットとの比較が必要でした。
 しかし、$N-2$から$-1$までカウントするとどうなるでしょうか？負の数は最上位ビットが$1$に設定されており、正の数はこのビットが$0$に設定されています。
-このビットだけをチェックして，カウンタが$-1$に達したことを検出すればよいのです。これがオタクが作ったカウンタです。
+このビットだけをチェックして，カウンタが-1に達したことを検出すればよいのです。これがオタクが作ったカウンタです。
 \fi
 
 \shortlist{code/nerd_counter.txt}
@@ -6826,7 +6839,7 @@ Therefore, we use an enumeration type with symbolic names for the states:
 \fi
 
 \ifshowtrans %(仮訳 12/15 校正1 01/01 aki)
-\noindent 最適な状態のエンコーディングには、様々な研究が行われました。
+\noindent 最適な状態のエンコーディングについては、様々な研究が行われました。
 一般的な選択肢としては、バイナリエンコーディングとワンホットエンコーディングの2つがあります。
 しかし、それらの低レベルな判断は合成ツールに任せて、読みやすいコードを目指します。
 \footnote{現在のバージョンのChiselでは、\code{Enum}型は状態をバイナリエンコーディングで表します。
@@ -7564,7 +7577,7 @@ unidirectional data exchange.
 ここでは、制御信号のみを交換する通信回路、特にFSMについて探ってきました。
 しかし、回路はデータを交換することもできます。
 協調的なデータ交換にはハンドシェイク信号を使用します。
-次節では、一方向データ交換のフロー制御のためのready-validインタフェースについて説明します。
+次節では、一方向データ交換のフロー制御のためのready-validインターフェースについて説明します。
 \fi
 
 \ifshoworiginal
@@ -7875,7 +7888,7 @@ no transfer takes place.
 \fi
 
 \ifshowtrans %(仮訳 12/21 校正1 01/01 aki)
-ready-validインタフェース~\cite[p.~480]{dally:vhdl:2016}は、送信側 (プロデューサ) では\code{data}と\code{valid}信号、受信側 (コンシューマ) では\code{ready}信号で構成される単純なフロー制御インタフェースです。
+ready-validインターフェース~\cite[p.~480]{dally:vhdl:2016}は、送信側 (プロデューサ) では\code{data}と\code{valid}信号、受信側 (コンシューマ) では\code{ready}信号で構成される単純なフロー制御インターフェースです。
 図~\ref{fig:readyvalid}は、ready-valid接続を示しています。
 送信側は\code{data}があるときに\code{valid}をアサートし、受信側は1ワードのデータを受信する準備ができているときに\code{ready}をアサートします。
 データの送信は、\code{valid}と\code{ready}の両方の信号がアサートされたときに行われます。
@@ -7895,7 +7908,7 @@ ready-validインタフェース~\cite[p.~480]{dally:vhdl:2016}は、送信側 (
 \begin{figure}
   \centering
   \includegraphics[scale=1]{figures/ready_valid1}
-  \caption{ready-validインタフェースのデータ転送、ready信号が早い場合}
+  \caption{ready-validインターフェースのデータ転送、ready信号が早い場合}
   \label{fig:ready_valid1}
 \end{figure}
 \fi
@@ -7930,7 +7943,7 @@ When the receiver can receive data in every clock cycle, it is called an
 \begin{figure}
   \centering
   \includegraphics[scale=1]{figures/ready_valid2}
-  \caption{ready-validインタフェースのデータ転送、ready信号が遅い場合}
+  \caption{ready-validインターフェースのデータ転送、ready信号が遅い場合}
   \label{fig:ready_valid2}
 \end{figure}
 \fi
@@ -7967,7 +7980,7 @@ interface. However, in that case the data will probably not change on signaling
 \begin{figure}
   \centering
   \includegraphics[scale=1]{figures/ready_valid3}
-  \caption{シングルサイクルの ready/valid 信号と  back-to-back 転送}
+  \caption{シングルサイクルの ready-valid 信号と  back-to-back 転送}
   \label{fig:ready_valid3}
 \end{figure}
 \fi
@@ -7983,7 +7996,7 @@ clock cycle) as shown in clock cycles 4 and 5 with the transfer of
 
 % 1/1 mune10 ここは ready_valid3 の間違いですね
 \ifshowtrans %(仮訳 12/21 校正1 01/01 aki)
-図~\ref{fig:ready_valid3}は、ready-validインタフェースの更なるバリエーションを示しています。
+図~\ref{fig:ready_valid3}は、ready-validインターフェースの更なるバリエーションを示しています。
 クロックサイクル1では、両方の信号(\code{ready}および\code{valid})が1クロックサイクルの間だけアサートされ、\code{D1}のデータ転送が起こります。
 \code{D2}と\code{D3}の転送で、クロックサイクル4と5に示すように、データを空きサイクルなし (クロックサイクル毎) に転送することができます。
 \fi
@@ -7997,7 +8010,7 @@ bundle, similar to the following:
 
 \ifshowtrans %((仮訳 12/21 校正1 01/01 aki)
 このインターフェースを構成可能にするために、\code{ready}も \code{valid}も、他方の組み合わせ回路の出力に依存することは許されていません。
-このインタフェースは非常に一般的なものなので、Chiselでは、以下のような\code{DecoupledIO}バンドルを定義しています :
+このインターフェースは非常に一般的なものなので、Chiselでは、以下のような\code{DecoupledIO}バンドルを定義しています :
 \fi
 
 \shortlist{code/fifo_decoupled.txt}
@@ -8028,7 +8041,7 @@ but needs to be defined by the concrete usage of the interface.
 残る疑問の1つは、アクティブな状態でデータ転送が行われて\emph{いない}場合に、\code{ready}または\code{valid}な状態がデアサートされる可能性があるかどうかです。
 例えば、受信側はデータを受信していなくても、他のイベントのために準備ができていないかもしれません。
 同じことが送信機にも考えられ、有効なデータがあるのは少しのクロックサイクルだけで、データ転送が起こらないことがあります。
-この動作が許されるかどうかは、ready-validインタフェースの一部ではなく、インタフェースの具体的な使用法によって定義される必要があります。
+この動作が許されるかどうかは、ready-validインターフェースの一部ではなく、インターフェースの具体的な使用法によって定義される必要があります。
 \fi
 
 \ifshoworiginal
@@ -9457,7 +9470,7 @@ Therefore, enqueue port of the FIFO needs to flip the signal directions.
 \fi
 
 \ifshowtrans %(仮訳 12/24 校正1 01/03 aki)
-\noindent \code{DecoupledIO}インタフェースを使用して、FIFOのインタフェースを定義します :
+\noindent \code{DecoupledIO}インターフェースを使用して、FIFOのインターフェースを定義します :
 \code{enq}エンキューと\code{deq}デキューポートを備えた\code{FifoIO}であって、read-validインターフェースで構成されます。
 \code{DecoupledIO}インターフェースは、プロデューサ（送信側）の視点から定義されます。したがって、FIFOのエンキューポートは信号の方向を反転させる必要があります。
 \fi
@@ -9540,7 +9553,7 @@ to the producer handshake, which violates the semantics of the ready-valid proto
 \fi
 
 \ifshowtrans %(仮訳 12/24 校正1 01/03 aki)
-プロデューサが\code{valid}で、コンシューマ（受信側）が\code{ready}のときに新しいワードを受け付けることができるように、バッファ内の両方のインタフェースを見るようにすることもできます。
+プロデューサが\code{valid}で、コンシューマ（受信側）が\code{ready}のときに新しいワードを受け付けることができるように、バッファ内の両方のインターフェースを見るようにすることもできます。
 しかし、これはコンシューマのハンドシェイクからプロデューサのハンドシェイクへの組み合わせパスを作ることになり、ready-validプロトコルのセマンティクスに違反することになります。
 \fi
 
@@ -10723,7 +10736,7 @@ repo as well and publish it locally.
 \fi
 
 \ifshowtrans %(校正 7/23 mune10)
-ローカルコマンド(sbt publishlocal)を使って、ライブラリを公開したときには、公開されたライブラリに\code{SNAPSHOT}文字列が含まれていることに気をつけてください。
+ローカルコマンド(sbt publishLocal)を使って、ライブラリを公開したときには、公開されたライブラリに\code{SNAPSHOT}文字列が含まれていることに気をつけてください。
 もしあなたがテスタを用いる際に、公開したバージョンが、ChiselのSNAPSHOTと互換性がない場合、
 \myref{https://github.com/freechipsproject/chisel-testers}{chisel-tester}についても同様にフォークとクローンを行い、ローカルで公開してください。
 \fi
