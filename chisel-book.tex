@@ -352,7 +352,7 @@
 % % \medskip\\
 % }
 %%end novalidate
-\vspace*{20mm}
+\vspace*{21mm}
 \hfill\includegraphics[width=100mm]{chisel-book-ja/inner-front.pdf}
 \fi
 
@@ -465,7 +465,7 @@ Chiselのデザインは実際にはScalaのプログラムで、実行可能な
 多くの人にとって、これは直感に反するかもしれません： 「なぜ、Chisel をVHDLやSystemVerilogのようなスタンドアロンの言語にしないのだろうか？」
 この質問に対する私の答えは次のとおりです。
 ソフトウェアの世界では、過去数十年間かつてないほど、様々な設計手法のイノベーションが起こりました。
-新しいハードウェアの言語にこれらの技術を適用しなくても、最新のプログラミング言語を \emph{使用する} だけで、これらのメリットを享受することができるのです。
+新しいハードウェアの言語にこれらの技術を適用しなくても、最新のプログラミング言語を\emph{使用する}だけで、これらのメリットを享受することができるのです。
 \fi
 
 \ifshoworiginal
@@ -488,7 +488,7 @@ Martin is an experienced educator, and it shows in the organization of this book
 マーティンは、経験豊富な教育者であり、それは本書の構成からもみてとれます。
 インストールおよび構成要素の解説から始めて、レンガを一つずつ積み上げて建物を作っていくように、読者の理解を深めてゆきます。
 付属の演習問題は、理解を固めるための接着剤で、それぞれの概念が読者の心に定着することを助けます。
-屋根が家をまとめ上げるのと同じように、\emph{ハードウェアジェネレータ} の理解はこの本の1つの到達点となるでしょう。
+屋根が家をまとめ上げるのと同じように、\emph{ハードウェアジェネレータ}の理解はこの本の1つの到達点となるでしょう。
 最終的には、RISCプロセッサのようなシンプルで有用なデザインを構築するための知識をこの本の読者は得ることになるでしょう。
 \fi
 
@@ -646,6 +646,38 @@ Many of your questions have helped to shape this book.
 あなたたちの質問の多くは、この本を形作るのに大変役立ちました。
 \fi
 
+
+%%% Japanese edition only
+% Acknowledgement:
+% I very much acknowledge the translation of the Chisel book, 2nd edition, from English to Japanese.
+% The English version of the book is used in teaching and on several tutorials on Chisel during the year.
+% I hope that the Japanese version can serve the same and help to introduce Chisel
+% as a hardware construction language for University courses on digital design.
+% October 5, 2021.
+% Martin Schoeberl
+\ifshowtrans
+
+\bigskip
+\bigskip
+
+\section*{日本語版に向けての謝辞}
+
+「Digital Design with Chisel」の第二版を、英語から日本語に翻訳していただいたことを大変感謝しています。
+この本の英語版は、年間を通じてChiselに関する授業やいくつかのチュートリアルで使用されています。
+日本語版も同様の役割を果たし、
+大学のデジタル回路設計コースのハードウェア構築言語としてChiselを紹介する一助となることを願っています。
+
+\bigskip
+
+\noindent
+2021年10月5日
+
+\noindent
+マーチン・シェーベル
+\fi
+%%% Japanese edition only
+
+
 \ifshowtrans %(日本語版追記)
 \clearpage
 \section*{日本語訳について}
@@ -655,7 +687,7 @@ Many of your questions have helped to shape this book.
 日本語版のソースコードはこちら{\small\url{https://github.com/chisel-jp/chisel-book}}で公開しています。
 翻訳で用いたオリジナルのバーションは『2020年3月2日 b20a791』です。
 Githubの方ではオリジナルの更新に合わせて翻訳も新しくしていく予定です。
-誤訳や表現の誤りの訂正、改善箇所などありましたら、GhithubでPRを出していただくか、Chisel勉強会のSlackで指摘していただけると助かります。
+誤訳や表現の誤りの訂正、改善箇所などありましたら、GhitHubでPRを出していただくか、Chisel勉強会のSlackで指摘していただけると助かります。
 Chiselに興味ある方は、Chisel勉強会に自由に参加できます。
 Chisel勉強会のSlackへ登録はこちら{\small\url{https://chisel-jp-slackin.herokuapp.com/}}からお願いします。
 
@@ -979,7 +1011,7 @@ Install a \myref{https://git-scm.com/download/win}{git client}.
 \myrefnoref{https://adoptopenjdk.net/}{AdoptOpenJDK}からJava OpenJDKをインストールします。
 ChiselとScalaもWindowsにインストールして使用できます。
 \myref{http://gtkwave.sourceforge.net/}{GTKWave}と\myref{https://www.jetbrains.com/idea/download/}{IntelliJ}（コミュニティ版）をインストールします。
-プロジェクトをインポートする際には、インストール済みの {\textbf JDK 1.8を選択し} てください（Java 11ではありません！）。
+プロジェクトをインポートする際には、インストール済みの \emph{JDK 1.8を選択} してください（Java 11ではありません！）。
 その前に\myref{https://www.scala-sbt.org/1.x/docs/Installing-sbt-on-Windows.html}{Windowsでのsbtのインストール}を参考にして、Windowsインストーラで\code{sbt}をインストールします。
 また、\myref{https://git-scm.com/download/win}{gitクライアント}をインストールします。
 \fi
@@ -1334,11 +1366,12 @@ Chiselの公式ドキュメントやその他の関連ドキュメントはオ�
 はChiselの紹介から始まり、SiFive社のフリーのRISC-V SoC実装である Freedomを例にFPGAの開発までカバーします。
 \item \myref{https://www.amazon.co.jp/dp/4297123053}
 {\emph{RISC-VとChiselで学ぶ はじめてのCPU自作 ――オープンソース命令セットによるカスタムCPU実装への第一歩}}
-（西山悠太朗、井⽥健太 著）
+（西山悠太朗、井田健太 著）
 はChiselを利用したCPUの作り方を解説しています。
 \item \myref{https://www.amazon.co.jp/dp/B09C3Y8SHY}
 {\emph{Chiselで始めるFPGA電子工作}}
 （堀江徹也 著）
+は、Chiselを使って、FPGAボードをインプリメントし、外部回路を接続する方法などが解説されています。
 \end{spacing}%%%
 \end{itemize}
 \fi %(日本語版追記)
@@ -1743,7 +1776,8 @@ Chiselは組み合わせ論理回路を記述するために、C言語やJava、
 \begin{figure}
   \centering
   \includegraphics[scale=\scale]{figures/logic}
-  \caption{\code{(a \& b) | c}の論理。信号は単一、もしくは複数のビットになり得る。Chiselの表現と回路図は同じになる。}
+  % \caption{\code{(a \& b) | c}の論理。信号は単一、もしくは複数のビットになり得る。Chiselの表現と回路図は同じになる。}
+  \caption{\code{(a \& b) | c}の論理}
   \label{fig:logic}
 \end{figure}
 \fi
@@ -1755,10 +1789,8 @@ that are combined with the AND and OR circuits.
 \fi
 
 \ifshowtrans %(校正 4/23 diningyo)
-\noindent\begin{minipage}{\linewidth}\vspace{0.5\baselineskip}\hspace*{1zw}%
-図~\ref{fig:logic}はこの組み合わせの表現の回路図を示します。
+図~\ref{fig:logic}はこの組み合わせの表現の回路図を示します（信号は単一、もしくは複数のビットになり得る。Chiselの表現と回路図は同じになる）。
 この回路のAND、ORゲートの接続信号は単一のビットのみならず、複数のビットからなるものであっても良いことに留意してください。
-\end{minipage}\vspace{0.5\baselineskip}
 \fi
 
 \ifshoworiginal
@@ -1839,11 +1871,15 @@ A single bit can be extracted as follows:
 \noindent A subfield can be extracted from end to start position:
 \fi
 
+\noindent\begin{minipage}{\linewidth}\vspace{0.5\baselineskip}
+
 \ifshowtrans %(校正 4/30 diningyo)
 \noindent サブフィールドは終了位置から開始位置までを指定することで抽出できます。
 \fi
 
 \shortlist{code/sub_field.txt}
+
+\end{minipage}
 
 \ifshoworiginal
 \noindent Bit fields are concatenated with \code{Cat}.
@@ -1874,13 +1910,16 @@ those operators have the same precedence and are evaluated from left to right.}
 \fi
 
 \ifshowtrans %(校正 4/30 diningyo)
-表~\ref{tab:operators}に、演算子の完全なリストを示します（\myref{https://github.com/freechipsproject/chisel3/wiki/Builtin-Operators}{組み込み演算子}も参照）。
+% 表~\ref{tab:operators}に、演算子の完全なリストを示します（\myref{https://github.com/freechipsproject/chisel3/wiki/Builtin-Operators}{組み込み演算子}も参照）。
+%%% FIXME -- somehow ~\ref{tab:operators} results in "2.2", not the expected number "2.1"
+%%% for now manually embed the table number 2.1... 
+表 2.1 に、演算子の完全なリストを示します（\myref{https://github.com/freechipsproject/chisel3/wiki/Builtin-Operators}{組み込み演算子}も参照）。
 Chiselオペレータの優先順位は、\myref{https://docs.scala-lang.org/tour/operators.html}{Scalaオペレータの優先順位}に従う回路の評価順序によって決定されます。
 不安な場合は、括弧を使用することをお勧めします。
 \footnotexbiased{Chiselでの演算子の優先順位は、Scala演算子を実行してハードウェアノードのツリーを作成したときのハードウェア生成の副作用です。
 Scalaの演算子の優先順位はJava/Cと似ていますが、同じではありません。
 Verilogの演算子の優先順位はCと同じですが、VHDLの演算子の優先順位は異なります。
-Verilogには論理演算の優先順位がありますが、VHDLではこれらの演算子は同じ優先順位を持ち、左から右に評価されます。}
+Verilogでは論理演算子間の優先順位がありますが、VHDLではこれらの演算子は同じ優先順位を持ち、左から右に評価されます。}
 \fi
 
 \ifshoworiginal
@@ -1969,14 +2008,14 @@ Table~\ref{tab:functions} shows various functions defined on and for Chisel data
     \toprule
     メソッド & 処理 & データ型 \\
     \midrule
-    \code{v.andR v.orR v.xorR} & リダクションAND, OR, XOR & UInt, SInt, returns Bool \\
+    \code{v.andR v.orR v.xorR} & リダクション演算 & UInt, SInt, returns Bool \\
     \code{v(n)} & 特定の1bitの選択 & UInt, SInt \\
     \code{v(end, start)} & 連続ビットの選択 & UInt, SInt \\
     \code{Fill(n, v)} & n回ビット列を繰り返し & UInt, SInt \\
     \code{Cat(a, b, ...)} & ビット列の連結 & UInt, SInt \\
     \bottomrule
   \end{tabular}
-  \caption{\code{v}に適用できるハードウェアのメソッド}
+  \caption{Chiselで定義されているハードウェアの関数（\code{v}に対しての呼び出し）}
 \end{table}
 \fi
 
@@ -2096,8 +2135,8 @@ Following code defines an 8-bit register, initialized with 0 at reset:
 
 \ifshowtrans %(校正 7/5 diningyo)
 Chiselには
-% \jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
-\jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
+% \jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
+\jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
 {D flip-flops}{https://en.wikipedia.org/wiki/Flip-flop\_(electronics)\#D\_flip-flop}
 を集めた要素であるレジスタが備わっています。
 レジスタには暗黙のうちにグローバルクロックが接続され、そのクロックの立ち上がりエッジで更新されます。初期値はレジスタの宣言時に指定することが可能で、その値はグローバルリセットに接続された同期リセットで使用されます。
@@ -2698,7 +2737,7 @@ call \code{generated}.
 \fi
 
 \ifshowtrans %(校正 5/20 mune10)
-図 ~\ref{fig:folders} は、典型的なChiselプロジェクトのソースツリーの構成を示します。
+図~\ref{fig:folders} は、典型的なChiselプロジェクトのソースツリーの構成を示します。
 プロジェクトのルートはプロジェクトのホームであり、\code{build.sbt}が置かれます。
 また、ビルドプロセスのための \code{Makefile} ファイルや、README、LICENSEファイルも配置します。
 \code{src}フォルダ には、全てのソースコードが配置されています。
@@ -2828,9 +2867,9 @@ To execute a \code{main} in the tester tree use following \code{sbt} command:
 %%%\newpage%%%
 
 \ifshowtrans %(校正 7/24 mune10)
-デフォルト\code{sbt}の検索対象は、ソースツリーの\code{main}部分のみで、\code{test}は含みません。
+デフォルト\code{sbt}の検索対象は、ソースツリーの\code{main}以下のみで、\code{test}以下は含みません。
 \footnotexbiased{これは、JavaやScalaではテストフォルダが単体テストしか含まず、\codefoot{main}をもつオブジェクトを含まない慣例からきています。}
-しかしながら、Chiselのテスタは、ここで説明するように、\code{main}を含みながらも、ソースツリーの\code{test}部に配置されます。
+しかしながら、Chiselのテスタは、ここで説明するように、\code{main}を含みながらも、ソースツリーの\code{test}以下に配置されます。
 したがって、テスタツリー内の\code{main}を実行するには下記の\code{sbt}コマンドを用います。
 \fi
 
@@ -2884,7 +2923,7 @@ The FIRRTL compiler performs transformations on the circuit.
 \fi
 
 \ifshowtrans %(校正 7/24 mune10)
-図 ~\ref{fig:flow} は、Chiselのツールフローを示しています。
+図~\ref{fig:flow} は、Chiselのツールフローを示しています。
 デジタル回路は\code{Hello.scala}として示されるChiselのクラスで記述されています。
 Scalaのコンパイラは、ChiselとScalaのライブラリと一緒にこのクラスをコンパイルし、
 標準の
@@ -2946,7 +2985,8 @@ and compares them with expected values.
 \fi
 
 \ifshowtrans %(校正 8/10 mune10)
-ハードウェア設計のテストは \myref{https://www.xilinx.com/support/documentation/sw_manuals/xilinx10/isehelp/ise_c_simulation_test_bench.htm}{test benches、テストベンチ}と呼ばれます。
+% ハードウェア設計のテストは \myref{https://www.xilinx.com/support/documentation/sw_manuals/xilinx10/isehelp/ise_c_simulation_test_bench.htm}{test benches、テストベンチ}と呼ばれます。
+ハードウェア設計のテストは \emph{テストベンチ（test benches）}と呼ばれます。
 テストベンチは、テスト対象となる design under test（DUT）と呼ばれる部分をインスタンス化して、入力ポートに値をセットして、出力ポートに出てくる値と期待値とを比較します。
 \fi
 
@@ -3173,7 +3213,7 @@ addition:
 \fi
 
 \ifshowtrans %(校正 5/20 mune10)
-\noindent Scalaの整数足し算をテストするためのミニマムテスト（テスト用のハローワールド）は次のようなものです。
+\noindent Scalaの整数足し算をテストするためのミニマムテスト（テスト用のHello World）は次のようなものです。
 \fi
 
 \shortlist{code/scalatest_hello_world.txt}
@@ -3670,7 +3710,7 @@ Xilinx Spartan).
 Chisel内でテストを行うことで、デザインのデバッグを高速化することができます。
 ただし、FPGA用にデザインを合成し、FPGAでテストを実行することは常に良いアイデアです。
 そうすることで、デザインのサイズ（通常はLUTとフリップフロップの数）と、デザインのパフォーマンスを最大クロック周波数という指標で、確認できます。
-例えば、 教科書的なパイプラインを構成を持つ RISC プロセッサの場合、約3000個の 4ビットLUT を使います。
+例えば、教科書的なパイプライン構成を持つ RISC プロセッサの場合、約3000個の 4ビットLUT を使います。
 低コストなFPGA（Intel Cyclone またはXilinx Spartan）上で100MHz程度で動作します。
 \fi
 
@@ -3764,7 +3804,7 @@ in your design.
 \section{Components in Chisel are Modules}
 \fi
 \ifshowtrans %(校正)
-\section{Chisel のコンポーネントはモジュール}
+\section{コンポーネントはChisel ではモジュール}
 \fi
 
 \index{IO interface}
@@ -3815,7 +3855,7 @@ port names, such as \code{data}, \code{valid}, or \code{ready}.
 
 \ifshowtrans %(校正 10/10 mune10)
 \noindent CompAは、\code{a}と\code{b}という2つの入力と、\code{x}と\code{y}の2つの出力を持ちます。
-CompBのポートには、\code{in1} \code{in2}, と \code{out} という名前を用います。
+CompBのポートには、\code{in1}、\code{in2} と \code{out} という名前を用います。
 すべてのポートは、8ビット幅を持つ符号なし整数（\code{UInt}）を使用します。
 この例のコードはコンポーネントを接続して階層を構築するものなので、コンポーネント内での実装は示していません。
 コンポーネントの実装は、コメントに``function of X'' と書かれているところに記述します。
@@ -3844,10 +3884,8 @@ in this example \code{val compA = Module(new CompA())}.
 \fi
 
 \ifshowtrans %(校正 10/10 mune10)
-\noindent\begin{minipage}{\linewidth}\vspace{0.5\baselineskip}\hspace*{1zw}%
 コンポーネントは、\code{new CompA()}のように\code{new}を使って生成したインスタンスを\code{Module()}でラップする必要があります。
 そのモジュールへの参照は、ローカル変数に格納されます。この例では、\code{val compA = Module(new CompA())}です。
-\end{minipage}
 \fi
 
 \ifshoworiginal
@@ -3948,7 +3986,7 @@ or ALU for short. Figure~\ref{fig:alu} shows the symbol of an ALU.
 \jaenref{演算装置}{https://ja.wikipedia.org/wiki/演算装置}
 {ALU: arithmetic-logic unit}{https://en.wikipedia.org/wiki/Arithmetic_logic_unit}
 があります。
-図 ~\ref{fig:alu} にALUのシンボルを示します。
+図~\ref{fig:alu} にALUのシンボルを示します。
 \fi
 
 \index{ALU}
@@ -3980,7 +4018,7 @@ functions such as and, or, xor. That's why it is called ALU.
 \fi
 
 \ifshowtrans %(校正 10/10 mune10)
-ALU は、図中の\code{A}と\code{B}の 2 つのデータ入力と、1 つの関数入力\code{fn}と出力の \code{Y}の持ちます。
+ALU は、図中の\code{A}と\code{B}の 2 つのデータ入力と、1 つの関数入力\code{fn}と出力の \code{Y}を持ちます。
 ALU は、\code{A}と\code{B}を演算し、結果を出力します。入力\code{fn}は、\code{A}と\code{B}の演算の種類を選択します。
 演算は通常、足し算や引き算などの演算や、and, or, xorなどの論理関数です。
 そのため ALU（算術論理演算ユニット）と呼ばれます。
@@ -4453,7 +4491,10 @@ of the decoder with a truth table, such as Table~\ref{tab:decoder}.
 \fi
 
 \ifshowtrans %(校正 10/5 diningyo)
-図~\ref{fig:decoder}は、2ビットから4ビットのデコーダを示しています。このデコーダの機能は、表~\ref{tab:decoder}のような真理値表として表現できます。
+図~\ref{fig:decoder}は、2ビットから4ビットのデコーダを示しています。
+% このデコーダの機能は、表~\ref{tab:decoder}のような真理値表として表現できます。
+%%% FIXME
+このデコーダの機能は、表5.1のような真理値表として表現できます。
 \fi
 
 \ifshoworiginal
@@ -4672,7 +4713,11 @@ assignment that catches all undefined input patterns.
 \fi
 
 \ifshowtrans %(校正 10/8 diningyo)
-図~\ref{fig:encoder}は、4ビットのワンホットな入力を2ビットのバイナリに変換したものを示しており、表~\ref{tab:encoder}は、そのエンコードの真理値表です。しかし、エンコーダは入力信号がワンホットな場合にのみ、期待通りに動作します。その他のすべての入力については、出力値は未定義となります。未定義の出力をもった機能を実装することは出来ないので、未定義となる入力のパターンを処理するためのデフォルト値を割り当てます。
+図~\ref{fig:encoder}は、4ビットのワンホットな入力を2ビットのバイナリに変換したものを示しており、
+% 表~\ref{tab:encoder}は、そのエンコードの真理値表です。
+%%% FIXME
+表5.2は、そのエンコードの真理値表です。
+しかし、エンコーダは入力信号がワンホットな場合にのみ、期待通りに動作します。その他のすべての入力については、出力値は未定義となります。未定義の出力をもった機能を実装することは出来ないので、未定義となる入力のパターンを処理するためのデフォルト値を割り当てます。
 \fi
 
 \ifshoworiginal
@@ -4784,8 +4829,8 @@ it at its output. Alternatively, in other words: the register updates its output
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 順序回路を構築するための基本的な要素は、レジスタです。
 レジスタは
-% \jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
-\jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
+% \jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
+\jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
 {D flip-flops}{https://en.wikipedia.org/wiki/Flip-flop_(electronics)\#D_flip-flop}
 の集まりです。
 Dフリップフロップは、クロックの立ち上がりエッジで入力の値をキャプチャして保持し、出力します。
@@ -4897,7 +4942,7 @@ assignment statement.
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 レジスタはリセット時に初期化することができます。
 \code{reset}信号は、\code{clock}信号と同じく、Chiselでは暗黙的です。
-レジスタコンストラクタの\code{RegInit}にパラメータとしてリセット値、例えばゼロを、与えます。
+レジスタコンストラクタの\code{RegInit}にパラメータとしてリセット値、例えばゼロを与えます。
 レジスタへの入力は、Chiselのアップデート演算子で行います。
 \fi
 
@@ -5025,7 +5070,7 @@ with a waveform viewer and used for debugging.
 \fi
 
 \ifshowtrans %(校正 6/20 mune10 校正1 12/29 aki)
-波形は、回路の動作をグラフィカルに指定するための優れたツールです。
+波形は、回路の動作をグラフィカルに把握するための優れたツールです。
 特に、多くの演算が並列に行われ、データが回路内をパイプラインで移動するような複雑な回路では、タイミング図が便利です。
 また、Chiselテスタでは、テスト中に波形を作成し、波形ビューワで表示してデバッグに利用することができます。
 \fi
@@ -5042,7 +5087,7 @@ output of the register.
 
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 典型的なデザインパターンは、イネーブル信号を持つレジスタです。
-イネーブル信号が\code{true}(High)の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
+イネーブル信号が\code{true}（High）の場合のみ、レジスタは入力をキャプチャし、そうでない場合は古い値を保持します。
 イネーブル信号付きレジスタは、同期リセットと同様に、レジスタの入力にマルチプレクサを使用して実装することができます。
 マルチプレクサへの入力の1つは、レジスタの出力のフィードバックです。
 \fi
@@ -5104,7 +5149,7 @@ follows the input with one clock cycle delay. Only in the fourth clock cycle
 
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 図~\ref{fig:register-en-wave}イネーブル付きレジスタの波形例を示します。
-ほとんどのサイクルで\code{enable}はHigh（\code{true}）で、レジスタの値は1クロックサイクルの遅延で入力に従っています。
+ほとんどのサイクルで\code{enable}は\code{true}（High）で、レジスタの値は1クロックサイクルの遅延で入力に従っています。
 4クロックサイクル目にのみ\code{enable}がLowになり、Dの立ち上がりエッジでレジスタは値（5）を保持します。
 \fi
 
@@ -5569,7 +5614,7 @@ counting by selecting input of the multiplexer that provides \code{0}.
 \fi
 
 \ifshowtrans %(校正)
-\begin{figure}
+\begin{figure}[b]
   \centering
   \includegraphics[scale=\scale]{figures/timer}
   \caption{ワンショットタイマ}
@@ -5592,7 +5637,7 @@ register \code{reg}.
 リセット時の初期値が\code{0}となる8ビットのレジスタ\code{cntReg}を使用します。
 ブール値\code{done}は\code{cntReg}を\code{0}と比較している結果です。
 入力マルチプレクサのために、デフォルト値が\code{0}のワイヤ\code{next}を導入します。
-\code{when/elsewhen}ブロックは、他の2つの入力を選択する機能を持ちます。
+\code{when/.elsewhen}ブロックは、他の2つの入力を選択する機能を持ちます。
 \code{load}信号の選択はデクリメントよりも優先されます。
 最後の行は、\code{next}で表されるマルチプレクサの出力をレジスタ\code{cntReg}の入力に接続します。
 \fi
@@ -5646,7 +5691,7 @@ within that period.
 \fi
 
 \ifshowtrans %(校正)
-\begin{figure}
+\begin{figure}[b]
   \centering
   \includegraphics[scale=\scale]{figures/pwm}
   \caption{パルス幅変調（PWM）}
@@ -5938,7 +5983,7 @@ This may be used in a serial port (UART) for the transmit function.
 \fi
 
 \ifshowtrans %(校正 1/1 mune10)
-\begin{figure}
+\begin{figure}[b]
   \centering
   % \includegraphics[scale=0.6]{figures/shiftreg-paraload}
   \includegraphics[scale=0.5]{figures/shiftreg-paraload}
@@ -6315,7 +6360,7 @@ stabilize at 0 or 1.
 システムクロックに同期していない入力信号は非同期信号と呼ばれています。
 これらの信号は、フリップフロップの入力のセットアップおよびホールド時間に違反することがあります。
 この違反はフリップフロップの
-\enref{Metastability}{https://en.wikipedia.org/wiki/Metastability_(electronics)}
+\enref{メタスタビリティ（Metastability）}{https://en.wikipedia.org/wiki/Metastability_(electronics)}
 を引き起こすことがあります。
 メタスタビリティは出力信号が0と1の間の値となったり、発振したりする結果を引き起こします。
 しかし、ある程度の時間を経ると、フリップフロップの値は0か1で安定します。
@@ -6364,7 +6409,7 @@ instantiates two registers.
 \ifshowtrans %(校正 12/8 diningyo)
 図~\ref{fig:synchronizer}は同期回路と外部との間の境界線を示しています。
 入力信号のシンクロナイザは、2つのフリップフロップから構成されています。
-Chiselではシンクロナイザのコードを、2つのレジスタをインスタンスする一行で表現できます。
+入力シンクロナイザのChiselコードは、2つのレジスタをインスタンス化するワンライナー（1行コード）です。
 \fi
 
 \shortlist{code/input_sync.txt}
@@ -6475,7 +6520,7 @@ However, this is usually a non-issue.
 真ん中のサンプルはバウンシング期間内になります。これは0か1のどちらかでしょう。
 2つの可能性のある結果を、\code{debounce A}と\code{debounce B}として示します。
 どちらも0から1への切り替わりは1回です。
-これら2つの結果の唯一の違いは、バージョンBの切り替わりが1サンプル周期遅れていることです。
+これら2つの結果の唯一の違いは、\code{debounce A}の切り替わりが1サンプル周期遅れていることです。
 しかし、これは通常は問題にはなりません。
 \fi
 
@@ -6488,7 +6533,7 @@ cycle \code{tick} signal, as we have done in Section~\ref{sec:gen:timing}.
 
 \ifshowtrans %(仮訳 12/10 aki)
 デバウンスのChiselコードは、シンクロナイザ用のコードよりも少し進化します。
-サンプルタイミングは、~\ref{sec:gen:timing}項で行ったように、1サイクルの\code{tick}信号を出すカウンタで生成します。
+サンプルタイミングは、~\ref{sec:gen:timing}項で行ったように、1サイクルのティック（\code{tick}）信号を出すカウンタで生成します。
 \fi
 
 \shortlist{code/input_fac.txt}
@@ -6557,7 +6602,7 @@ Majority voting ensures that the signal is stable for longer than the sampling p
 \fi
 
 \ifshowtrans %(校正 12/30 mune10)
-時々、入力信号がノイズを含んでいて、こうしたノイズを入力同期器やデバウンスユニットが意図せずにサンプリングしてしまう可能性があります。
+入力信号が、時々ノイズを含んでいて、こうしたノイズを入力シンクロナイザやデバウンスユニットが意図せずにサンプリングしてしまう可能性があります。
 これらの入力スパイクをフィルタリングする方法の一つとして、多数決回路を使用する方法があります。
 最も単純なケースでは、3つのサンプルを取り、多数決を行います。
 中央値に関係する
@@ -6876,7 +6921,7 @@ FSMは\emph{緑}のレベルから始まり、
 \emph{悪いできごと}（\code{badEvent}）が発生すると、アラームレベルは\emph{橙}に切り替わります。
 2回目の悪いできごとが発生すると、アラームレベルは\emph{赤}に切り替わります。
 この時にベルが鳴るようにしたいです。そこでこのFSMの唯一の出力である \emph{ベルを鳴らす}（\code{ringBell}）を\emph{赤}状態に接続します。
-アラームは\emph{clear}信号でリセットできます。
+アラームは\emph{クリア（clear）}信号でリセットできます。
 \fi
 
 \ifshoworiginal
@@ -7117,7 +7162,7 @@ We have seen this Chisel one-liner before:
 したがって、入力の変化による出力の変化は、\emph{最も早い}場合でも、次のクロックサイクルとなります。
 即座に変化を観察したい場合は、入力から出力までの組み合わせパスが必要です。
 最小限の例として、エッジ検出回路を考えてみましょう。
-以前にもこのChiselの一行記述を見たことがあります:
+以前にもこのChiselのワンライナー（1行コード）を見たことがあります：
 \fi
 
 \shortlist{code/sequ_reg_rising.txt}
@@ -7539,7 +7584,7 @@ The light flasher has one input \code{start} and one output
 \fi
 
 \ifshowtrans %(校正 6/20 mune10 校正1 01/01 aki)
-協調型FSMについて議論するために、我々は~\cite[17章]{dally:vhdl:2016}、ライトフラッシャの例を使用します。
+協調型FSMについて議論するために、我々は参考文献~\cite[17章]{dally:vhdl:2016}の、ライトフラッシャの例を使用します。
 ライトフラッシャは、1つの入力\code{start}と1つの出力\code{light}を有しています。
 ライトフラッシャの仕様は以下の通りです :
 \fi
@@ -7574,7 +7619,7 @@ flasher.
 \fi
 
 \ifshowtrans %(仮訳 12/20 校正1 01/01 aki)
-仕様通りに単純に実装したFSM\footnote{状態遷移図は~\cite[p.~376]{dally:vhdl:2016}に示されています。}は27の状態を持っており、
+仕様通りに単純に実装したFSM\footnote{状態遷移図は、参考文献~\cite[376ページ]{dally:vhdl:2016}に示されています。}は27の状態を持っており、
 入力待ちの初期状態が1つ、3種類の\emph{オン}状態が$3 \times 6$と、\emph{オフ}状態が$2 \times 4$です。
 このライトフラッシャの単純実装のコードは、ここでは示しません。
 \fi
@@ -8030,7 +8075,7 @@ popcountが有効な場合、FSMは\code{done}状態に切り替わり、popcoun
 
 \index{Ready-valid interface}
 \ifshowtrans %(追記 12/30 mune10)
-\index{Ready-Valid インターフェース}
+\index{ready-valid インターフェース}
 \fi
 
 \ifshoworiginal
@@ -8171,7 +8216,7 @@ interface. However, in that case the data will probably not change on signaling
   \centering
   % \includegraphics[scale=1]{figures/ready_valid3}
   \includegraphics[scale=0.8]{figures/ready_valid3}
-  \caption{シングルサイクルの ready/valid 信号と  back-to-back 転送}
+  \caption{シングルサイクルの ready-valid 信号と  back-to-back 転送}
   \label{fig:ready_valid3}
 \end{figure}
 \fi
@@ -8835,7 +8880,7 @@ different implementations) and then checks that \code{tick} repeats every $n$ cl
 \fi
 
 \ifshowtrans %(校正 12/30 diningyo)
-\emph{ticker}を使って作成した異なるすべての論理は、単一のテストベンチを用いてテストできます。
+Tickerクラスを継承して作成した異なるすべての論理は、単一のテストベンチを用いてテストできます。
 方法は簡単で、テストベンチで\code{Ticker}の派生クラスを受け入れるようにする\emph{だけ}です。
 コード~\ref{lst:ticker:test}はテスタのためのコードです。
 \code{TickerTester}は複数のパラメータを持ちます。1つ目の型パラメータ \code{[T <: Ticker]} で\code{Ticker}または\code{Ticker}を継承するクラスを受け付けることができます。2つ目は\code{T}の型を持つDUTで、3つ目は期待するカウントパルスのクロックサイクル数です。
@@ -9073,7 +9118,7 @@ Data is put into the FIFO by the writer on \code{din} with an active
 \begin{figure}[t]
   \centering
   \includegraphics[scale=\scale]{figures/fifo}
-  \caption{writer, FIFO バッファ と reader 回路}
+  \caption{writer、FIFO バッファ と reader 回路}
   \label{fig:fifo}
 \end{figure}
 \fi
@@ -9331,11 +9376,11 @@ when both \code{ready} and \code{valid} are asserted.
 
 \ifshowtrans %(仮訳 12/23 校正1 01/02 aki)
 まず、インターフェースであるポートの定義が必要です。
-UART設計では、送信機から見た方向で、ready/validハンドシェイクインターフェースを使用します。
+UART設計では、送信機から見た方向で、ready-validハンドシェイクインターフェースを使用します。
 
 \shortlist{code/uart_channel.txt}
 
-ready/validインターフェースの慣習は、\code{ready}と\code{valid}の両方がアサートされたときにデータが転送されるというものです。
+ready-validインターフェースの慣習は、\code{ready}と\code{valid}の両方がアサートされたときにデータが転送されるというものです。
 \fi
 
 \ifshoworiginal
@@ -9439,7 +9484,7 @@ space in the shift register. However, we do not want to add this
 \fi
 
 \ifshowtrans %(校正 12/31 mune10)
-\longlist{code/uart_buffer.txt}{ready/valid インターフェースを持つ1バイトバッファ}{lst:uart:buffer}
+\longlist{code/uart_buffer.txt}{ready-valid インターフェースを持つ1バイトバッファ}{lst:uart:buffer}
 \fi
 
 \ifshoworiginal
@@ -9634,7 +9679,7 @@ it is not \code{full}.
 \fi
 
 \ifshowtrans %(仮訳 12/24 校正1 01/03 aki)
-\ref{sec:fifo}節では、\code{write}, \code{full}, \code{din}, \code{read}, \code{empty}, と \code{dout}などの信号に共通の名前を付けて、インターフェースのための独自の型を定義しました。
+\ref{sec:fifo}節では、\code{write}、\code{full}、\code{din}、\code{read}、\code{empty} と \code{dout}などの信号に共通の名前を付けて、インターフェースのための独自の型を定義しました。
 このようなバッファの入出力は、データとハンドシェイクのための2つの信号で構成されます(たとえば、FIFOが\code{full}でないときに\code{write}します)。
 \fi
 
@@ -9674,7 +9719,7 @@ Therefore, enqueue port of the FIFO needs to flip the signal directions.
 \index{DecoupledIO}
 \index{Ready-valid interface}
 \ifshowtrans %(追記 12/30 mune10)
-\index{Ready-valid インターフェース}
+\index{ready-valid インターフェース}
 \fi
 
 \shortlist{code/fifo_io.txt}
@@ -9871,8 +9916,8 @@ To distinguish between empty and full we need another flag.
 ソフトウェアのキューは、通常、単一スレッド内の順に実行されるコードによって使用されます。
 または、プロデューサとコンシューマのスレッドを分離するために使われます。
 固定サイズのFIFOキューは通常
-% \jaenref{リングバッファ, 循環バッファ}{https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%90%E3%83%83%E3%83%95%E3%82%A1}
-\jaenref{リングバッファ, 循環バッファ}{https://ja.wikipedia.org/wiki/リングバッファ}
+% \jaenref{リングバッファ、循環バッファ}{https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%90%E3%83%83%E3%83%95%E3%82%A1}
+\jaenref{リングバッファ、循環バッファ}{https://ja.wikipedia.org/wiki/リングバッファ}
 {circular buffer}{https://en.wikipedia.org/wiki/Circular_buffer}
 として実装されます。
 2つのポインタが、キュー用に確保されたメモリ内の読み取り位置と書き込み位置を指します。
@@ -10308,7 +10353,7 @@ to check if the transmit buffer is free.
 \fi
 
 \ifshowtrans %(仮訳 12/27 校正1 01/03 aki)
-文字の出力が遅い（1秒間に2文字）ので、Ready/validハンドシェイクを行わずに、UART送信レジスタにデータを書き込むことができます。
+文字の出力が遅い（1秒間に2文字）ので、ready-validハンドシェイクを行わずに、UART送信レジスタにデータを書き込むことができます。
 この例を拡張して、ボーレートが許す限りの速さで0～9の繰り返しの数字を書き込むようにします。
 この場合、ステートマシンを拡張してUARTの状態をポーリングし、送信バッファが空いているかどうかをチェックする必要があります。
 \fi
@@ -11609,7 +11654,8 @@ related to digital design and computer architecture.
 \item [WCET] Worst-Case Execution Time
 \end{description}
 
-\bibliographystyle{plain}
+% \bibliographystyle{plain}
+\bibliographystyle{unsrt}
 \bibliography{chisel}
 
 % 12/30 muneto 日本語化

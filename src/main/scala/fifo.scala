@@ -219,10 +219,10 @@ class MemFifo[T <: Data](gen: T, depth: Int) extends Fifo(gen: T, depth: Int) {
           fullReg := false.B
           emptyReg := nextRead === writePtr
           incrRead := true.B
-        } otherwise {
+        } .otherwise {
           stateReg := idle
         }
-      } otherwise {
+      } .otherwise {
         shadowReg := data
         stateReg := full
       }
@@ -235,7 +235,7 @@ class MemFifo[T <: Data](gen: T, depth: Int) extends Fifo(gen: T, depth: Int) {
           fullReg := false.B
           emptyReg := nextRead === writePtr
           incrRead := true.B
-        } otherwise {
+        } .otherwise {
           stateReg := idle
         }
 
