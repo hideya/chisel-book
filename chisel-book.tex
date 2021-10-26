@@ -352,7 +352,7 @@
 % % \medskip\\
 % }
 %%end novalidate
-\vspace*{20mm}
+\vspace*{21mm}
 \hfill\includegraphics[width=100mm]{chisel-book-ja/inner-front.pdf}
 \fi
 
@@ -465,7 +465,7 @@ Chiselのデザインは実際にはScalaのプログラムで、実行可能な
 多くの人にとって、これは直感に反するかもしれません： 「なぜ、Chisel をVHDLやSystemVerilogのようなスタンドアロンの言語にしないのだろうか？」
 この質問に対する私の答えは次のとおりです。
 ソフトウェアの世界では、過去数十年間かつてないほど、様々な設計手法のイノベーションが起こりました。
-新しいハードウェアの言語にこれらの技術を適用しなくても、最新のプログラミング言語を \emph{使用する} だけで、これらのメリットを享受することができるのです。
+新しいハードウェアの言語にこれらの技術を適用しなくても、最新のプログラミング言語を\emph{使用する}だけで、これらのメリットを享受することができるのです。
 \fi
 
 \ifshoworiginal
@@ -488,7 +488,7 @@ Martin is an experienced educator, and it shows in the organization of this book
 マーティンは、経験豊富な教育者であり、それは本書の構成からもみてとれます。
 インストールおよび構成要素の解説から始めて、レンガを一つずつ積み上げて建物を作っていくように、読者の理解を深めてゆきます。
 付属の演習問題は、理解を固めるための接着剤で、それぞれの概念が読者の心に定着することを助けます。
-屋根が家をまとめ上げるのと同じように、\emph{ハードウェアジェネレータ} の理解はこの本の1つの到達点となるでしょう。
+屋根が家をまとめ上げるのと同じように、\emph{ハードウェアジェネレータ}の理解はこの本の1つの到達点となるでしょう。
 最終的には、RISCプロセッサのようなシンプルで有用なデザインを構築するための知識をこの本の読者は得ることになるでしょう。
 \fi
 
@@ -4492,7 +4492,10 @@ of the decoder with a truth table, such as Table~\ref{tab:decoder}.
 \fi
 
 \ifshowtrans %(校正 10/5 diningyo)
-図~\ref{fig:decoder}は、2ビットから4ビットのデコーダを示しています。このデコーダの機能は、表~\ref{tab:decoder}のような真理値表として表現できます。
+図~\ref{fig:decoder}は、2ビットから4ビットのデコーダを示しています。
+% このデコーダの機能は、表~\ref{tab:decoder}のような真理値表として表現できます。
+%%% FIXME
+このデコーダの機能は、表5.1のような真理値表として表現できます。
 \fi
 
 \ifshoworiginal
@@ -4711,7 +4714,11 @@ assignment that catches all undefined input patterns.
 \fi
 
 \ifshowtrans %(校正 10/8 diningyo)
-図~\ref{fig:encoder}は、4ビットのワンホットな入力を2ビットのバイナリに変換したものを示しており、表~\ref{tab:encoder}は、そのエンコードの真理値表です。しかし、エンコーダは入力信号がワンホットな場合にのみ、期待通りに動作します。その他のすべての入力については、出力値は未定義となります。未定義の出力をもった機能を実装することは出来ないので、未定義となる入力のパターンを処理するためのデフォルト値を割り当てます。
+図~\ref{fig:encoder}は、4ビットのワンホットな入力を2ビットのバイナリに変換したものを示しており、
+% 表~\ref{tab:encoder}は、そのエンコードの真理値表です。
+%%% FIXME
+表5.2は、そのエンコードの真理値表です。
+しかし、エンコーダは入力信号がワンホットな場合にのみ、期待通りに動作します。その他のすべての入力については、出力値は未定義となります。未定義の出力をもった機能を実装することは出来ないので、未定義となる入力のパターンを処理するためのデフォルト値を割り当てます。
 \fi
 
 \ifshoworiginal
@@ -8069,7 +8076,7 @@ popcountが有効な場合、FSMは\code{done}状態に切り替わり、popcoun
 
 \index{Ready-valid interface}
 \ifshowtrans %(追記 12/30 mune10)
-\index{Ready-Valid インターフェース}
+\index{ready-valid インターフェース}
 \fi
 
 \ifshoworiginal
@@ -9713,7 +9720,7 @@ Therefore, enqueue port of the FIFO needs to flip the signal directions.
 \index{DecoupledIO}
 \index{Ready-valid interface}
 \ifshowtrans %(追記 12/30 mune10)
-\index{Ready-valid インターフェース}
+\index{ready-valid インターフェース}
 \fi
 
 \shortlist{code/fifo_io.txt}
@@ -10347,7 +10354,7 @@ to check if the transmit buffer is free.
 \fi
 
 \ifshowtrans %(仮訳 12/27 校正1 01/03 aki)
-文字の出力が遅い（1秒間に2文字）ので、Ready/validハンドシェイクを行わずに、UART送信レジスタにデータを書き込むことができます。
+文字の出力が遅い（1秒間に2文字）ので、ready-validハンドシェイクを行わずに、UART送信レジスタにデータを書き込むことができます。
 この例を拡張して、ボーレートが許す限りの速さで0～9の繰り返しの数字を書き込むようにします。
 この場合、ステートマシンを拡張してUARTの状態をポーリングし、送信バッファが空いているかどうかをチェックする必要があります。
 \fi
