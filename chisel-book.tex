@@ -1371,6 +1371,7 @@ Chiselの公式ドキュメントやその他の関連ドキュメントはオ�
 \item \myref{https://www.amazon.co.jp/dp/B09C3Y8SHY}
 {\emph{Chiselで始めるFPGA電子工作}}
 （堀江徹也 著）
+は、Chiselを使って、FPGAボードをインプリメントし、外部回路を接続する方法などが解説されています。
 \end{spacing}%%%
 \end{itemize}
 \fi %(日本語版追記)
@@ -2007,7 +2008,7 @@ Table~\ref{tab:functions} shows various functions defined on and for Chisel data
     \toprule
     メソッド & 処理 & データ型 \\
     \midrule
-    \code{v.andR v.orR v.xorR} & リダクションAND, OR, XOR & UInt, SInt, returns Bool \\
+    \code{v.andR v.orR v.xorR} & リダクション演算 & UInt, SInt, returns Bool \\
     \code{v(n)} & 特定の1bitの選択 & UInt, SInt \\
     \code{v(end, start)} & 連続ビットの選択 & UInt, SInt \\
     \code{Fill(n, v)} & n回ビット列を繰り返し & UInt, SInt \\
@@ -2134,8 +2135,8 @@ Following code defines an 8-bit register, initialized with 0 at reset:
 
 \ifshowtrans %(校正 7/5 diningyo)
 Chiselには
-% \jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
-\jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
+% \jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
+\jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
 {D flip-flops}{https://en.wikipedia.org/wiki/Flip-flop\_(electronics)\#D\_flip-flop}
 を集めた要素であるレジスタが備わっています。
 レジスタには暗黙のうちにグローバルクロックが接続され、そのクロックの立ち上がりエッジで更新されます。初期値はレジスタの宣言時に指定することが可能で、その値はグローバルリセットに接続された同期リセットで使用されます。
@@ -2736,7 +2737,7 @@ call \code{generated}.
 \fi
 
 \ifshowtrans %(校正 5/20 mune10)
-図 ~\ref{fig:folders} は、典型的なChiselプロジェクトのソースツリーの構成を示します。
+図~\ref{fig:folders} は、典型的なChiselプロジェクトのソースツリーの構成を示します。
 プロジェクトのルートはプロジェクトのホームであり、\code{build.sbt}が置かれます。
 また、ビルドプロセスのための \code{Makefile} ファイルや、README、LICENSEファイルも配置します。
 \code{src}フォルダ には、全てのソースコードが配置されています。
@@ -2922,7 +2923,7 @@ The FIRRTL compiler performs transformations on the circuit.
 \fi
 
 \ifshowtrans %(校正 7/24 mune10)
-図 ~\ref{fig:flow} は、Chiselのツールフローを示しています。
+図~\ref{fig:flow} は、Chiselのツールフローを示しています。
 デジタル回路は\code{Hello.scala}として示されるChiselのクラスで記述されています。
 Scalaのコンパイラは、ChiselとScalaのライブラリと一緒にこのクラスをコンパイルし、
 標準の
@@ -3709,7 +3710,7 @@ Xilinx Spartan).
 Chisel内でテストを行うことで、デザインのデバッグを高速化することができます。
 ただし、FPGA用にデザインを合成し、FPGAでテストを実行することは常に良いアイデアです。
 そうすることで、デザインのサイズ（通常はLUTとフリップフロップの数）と、デザインのパフォーマンスを最大クロック周波数という指標で、確認できます。
-例えば、 教科書的なパイプラインを構成を持つ RISC プロセッサの場合、約3000個の 4ビットLUT を使います。
+例えば、教科書的なパイプライン構成を持つ RISC プロセッサの場合、約3000個の 4ビットLUT を使います。
 低コストなFPGA（Intel Cyclone またはXilinx Spartan）上で100MHz程度で動作します。
 \fi
 
@@ -3883,10 +3884,8 @@ in this example \code{val compA = Module(new CompA())}.
 \fi
 
 \ifshowtrans %(校正 10/10 mune10)
-\noindent\begin{minipage}{\linewidth}\vspace{0.5\baselineskip}\hspace*{1zw}%
 コンポーネントは、\code{new CompA()}のように\code{new}を使って生成したインスタンスを\code{Module()}でラップする必要があります。
 そのモジュールへの参照は、ローカル変数に格納されます。この例では、\code{val compA = Module(new CompA())}です。
-\end{minipage}
 \fi
 
 \ifshoworiginal
@@ -3987,7 +3986,7 @@ or ALU for short. Figure~\ref{fig:alu} shows the symbol of an ALU.
 \jaenref{演算装置}{https://ja.wikipedia.org/wiki/演算装置}
 {ALU: arithmetic-logic unit}{https://en.wikipedia.org/wiki/Arithmetic_logic_unit}
 があります。
-図 ~\ref{fig:alu} にALUのシンボルを示します。
+図~\ref{fig:alu} にALUのシンボルを示します。
 \fi
 
 \index{ALU}
@@ -4830,8 +4829,8 @@ it at its output. Alternatively, in other words: the register updates its output
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 順序回路を構築するための基本的な要素は、レジスタです。
 レジスタは
-% \jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
-\jaenref{D型フリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
+% \jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97#D%E5%9E%8B%E3%83%95%E3%83%AA%E3%83%83%E3%83%97%E3%83%95%E3%83%AD%E3%83%83%E3%83%97}
+\jaenref{Dフリップフロップ}{https://ja.wikipedia.org/wiki/フリップフロップ#D型フリップフロップ}
 {D flip-flops}{https://en.wikipedia.org/wiki/Flip-flop_(electronics)\#D_flip-flop}
 の集まりです。
 Dフリップフロップは、クロックの立ち上がりエッジで入力の値をキャプチャして保持し、出力します。
@@ -4943,7 +4942,7 @@ assignment statement.
 \ifshowtrans %(仮訳 12/06 校正1 12/29 aki)
 レジスタはリセット時に初期化することができます。
 \code{reset}信号は、\code{clock}信号と同じく、Chiselでは暗黙的です。
-レジスタコンストラクタの\code{RegInit}にパラメータとしてリセット値、例えばゼロを、与えます。
+レジスタコンストラクタの\code{RegInit}にパラメータとしてリセット値、例えばゼロを与えます。
 レジスタへの入力は、Chiselのアップデート演算子で行います。
 \fi
 
@@ -5071,7 +5070,7 @@ with a waveform viewer and used for debugging.
 \fi
 
 \ifshowtrans %(校正 6/20 mune10 校正1 12/29 aki)
-波形は、回路の動作をグラフィカルに指定するための優れたツールです。
+波形は、回路の動作をグラフィカルに把握するための優れたツールです。
 特に、多くの演算が並列に行われ、データが回路内をパイプラインで移動するような複雑な回路では、タイミング図が便利です。
 また、Chiselテスタでは、テスト中に波形を作成し、波形ビューワで表示してデバッグに利用することができます。
 \fi
@@ -6361,7 +6360,7 @@ stabilize at 0 or 1.
 システムクロックに同期していない入力信号は非同期信号と呼ばれています。
 これらの信号は、フリップフロップの入力のセットアップおよびホールド時間に違反することがあります。
 この違反はフリップフロップの
-\enref{Metastability}{https://en.wikipedia.org/wiki/Metastability_(electronics)}
+\enref{メタスタビリティ（Metastability）}{https://en.wikipedia.org/wiki/Metastability_(electronics)}
 を引き起こすことがあります。
 メタスタビリティは出力信号が0と1の間の値となったり、発振したりする結果を引き起こします。
 しかし、ある程度の時間を経ると、フリップフロップの値は0か1で安定します。
@@ -6410,7 +6409,7 @@ instantiates two registers.
 \ifshowtrans %(校正 12/8 diningyo)
 図~\ref{fig:synchronizer}は同期回路と外部との間の境界線を示しています。
 入力信号のシンクロナイザは、2つのフリップフロップから構成されています。
-Chiselではシンクロナイザのコードを、2つのレジスタをインスタンスする一行で表現できます。
+入力シンクロナイザのChiselコードは、2つのレジスタをインスタンス化するワンライナー（1行コード）です。
 \fi
 
 \shortlist{code/input_sync.txt}
@@ -6521,7 +6520,7 @@ However, this is usually a non-issue.
 真ん中のサンプルはバウンシング期間内になります。これは0か1のどちらかでしょう。
 2つの可能性のある結果を、\code{debounce A}と\code{debounce B}として示します。
 どちらも0から1への切り替わりは1回です。
-これら2つの結果の唯一の違いは、バージョンBの切り替わりが1サンプル周期遅れていることです。
+これら2つの結果の唯一の違いは、\code{debounce A}の切り替わりが1サンプル周期遅れていることです。
 しかし、これは通常は問題にはなりません。
 \fi
 
@@ -6534,7 +6533,7 @@ cycle \code{tick} signal, as we have done in Section~\ref{sec:gen:timing}.
 
 \ifshowtrans %(仮訳 12/10 aki)
 デバウンスのChiselコードは、シンクロナイザ用のコードよりも少し進化します。
-サンプルタイミングは、~\ref{sec:gen:timing}項で行ったように、1サイクルの\code{tick}信号を出すカウンタで生成します。
+サンプルタイミングは、~\ref{sec:gen:timing}項で行ったように、1サイクルのティック（\code{tick}）信号を出すカウンタで生成します。
 \fi
 
 \shortlist{code/input_fac.txt}
@@ -6603,7 +6602,7 @@ Majority voting ensures that the signal is stable for longer than the sampling p
 \fi
 
 \ifshowtrans %(校正 12/30 mune10)
-時々、入力信号がノイズを含んでいて、こうしたノイズを入力同期器やデバウンスユニットが意図せずにサンプリングしてしまう可能性があります。
+入力信号が、時々ノイズを含んでいて、こうしたノイズを入力シンクロナイザやデバウンスユニットが意図せずにサンプリングしてしまう可能性があります。
 これらの入力スパイクをフィルタリングする方法の一つとして、多数決回路を使用する方法があります。
 最も単純なケースでは、3つのサンプルを取り、多数決を行います。
 中央値に関係する
@@ -6922,7 +6921,7 @@ FSMは\emph{緑}のレベルから始まり、
 \emph{悪いできごと}（\code{badEvent}）が発生すると、アラームレベルは\emph{橙}に切り替わります。
 2回目の悪いできごとが発生すると、アラームレベルは\emph{赤}に切り替わります。
 この時にベルが鳴るようにしたいです。そこでこのFSMの唯一の出力である \emph{ベルを鳴らす}（\code{ringBell}）を\emph{赤}状態に接続します。
-アラームは\emph{clear}信号でリセットできます。
+アラームは\emph{クリア（clear）}信号でリセットできます。
 \fi
 
 \ifshoworiginal
@@ -7163,7 +7162,7 @@ We have seen this Chisel one-liner before:
 したがって、入力の変化による出力の変化は、\emph{最も早い}場合でも、次のクロックサイクルとなります。
 即座に変化を観察したい場合は、入力から出力までの組み合わせパスが必要です。
 最小限の例として、エッジ検出回路を考えてみましょう。
-以前にもこのChiselの一行記述を見たことがあります:
+以前にもこのChiselのワンライナー（1行コード）を見たことがあります：
 \fi
 
 \shortlist{code/sequ_reg_rising.txt}
@@ -8881,7 +8880,7 @@ different implementations) and then checks that \code{tick} repeats every $n$ cl
 \fi
 
 \ifshowtrans %(校正 12/30 diningyo)
-\emph{ticker}を使って作成した異なるすべての論理は、単一のテストベンチを用いてテストできます。
+Tickerクラスを継承して作成した異なるすべての論理は、単一のテストベンチを用いてテストできます。
 方法は簡単で、テストベンチで\code{Ticker}の派生クラスを受け入れるようにする\emph{だけ}です。
 コード~\ref{lst:ticker:test}はテスタのためのコードです。
 \code{TickerTester}は複数のパラメータを持ちます。1つ目の型パラメータ \code{[T <: Ticker]} で\code{Ticker}または\code{Ticker}を継承するクラスを受け付けることができます。2つ目は\code{T}の型を持つDUTで、3つ目は期待するカウントパルスのクロックサイクル数です。
@@ -9119,7 +9118,7 @@ Data is put into the FIFO by the writer on \code{din} with an active
 \begin{figure}[t]
   \centering
   \includegraphics[scale=\scale]{figures/fifo}
-  \caption{writer, FIFO バッファ と reader 回路}
+  \caption{writer、FIFO バッファ と reader 回路}
   \label{fig:fifo}
 \end{figure}
 \fi
@@ -9680,7 +9679,7 @@ it is not \code{full}.
 \fi
 
 \ifshowtrans %(仮訳 12/24 校正1 01/03 aki)
-\ref{sec:fifo}節では、\code{write}, \code{full}, \code{din}, \code{read}, \code{empty}, と \code{dout}などの信号に共通の名前を付けて、インターフェースのための独自の型を定義しました。
+\ref{sec:fifo}節では、\code{write}、\code{full}、\code{din}、\code{read}、\code{empty} と \code{dout}などの信号に共通の名前を付けて、インターフェースのための独自の型を定義しました。
 このようなバッファの入出力は、データとハンドシェイクのための2つの信号で構成されます(たとえば、FIFOが\code{full}でないときに\code{write}します)。
 \fi
 
@@ -9917,8 +9916,8 @@ To distinguish between empty and full we need another flag.
 ソフトウェアのキューは、通常、単一スレッド内の順に実行されるコードによって使用されます。
 または、プロデューサとコンシューマのスレッドを分離するために使われます。
 固定サイズのFIFOキューは通常
-% \jaenref{リングバッファ, 循環バッファ}{https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%90%E3%83%83%E3%83%95%E3%82%A1}
-\jaenref{リングバッファ, 循環バッファ}{https://ja.wikipedia.org/wiki/リングバッファ}
+% \jaenref{リングバッファ、循環バッファ}{https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%90%E3%83%83%E3%83%95%E3%82%A1}
+\jaenref{リングバッファ、循環バッファ}{https://ja.wikipedia.org/wiki/リングバッファ}
 {circular buffer}{https://en.wikipedia.org/wiki/Circular_buffer}
 として実装されます。
 2つのポインタが、キュー用に確保されたメモリ内の読み取り位置と書き込み位置を指します。
